@@ -1,40 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Digital Board</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <header>
-            <h1>Digital Board</h1>
-        </header>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Board</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Digital Board</h1>
+    </header>
 
-        <div>
-            <div class="container">
-                <div class="tool-panel">
-                    <input type="file" id="fileInput" accept="image/*">
-                    <div id="Painter">
-                        <input type="color" id="colorPicker">
-                        <button id="EraserBtn">Borrador</button>
-                        <button id="clearBtn">Limpiar</button>
-                    </div>
-                    <div id="Size">
-                        <label for="brushSize">Tamaño del pincel/borrador:</label>
-                        <input type="range" id="brushSize" min="1" max="25" value="5">
-                    </div>
-                </div>
-                <div class="canvas-container">
-                    <canvas id="imageCanvas"></canvas>
-                    <canvas id="Board"></canvas>
-                </div>
+    <div class="container">
+        <div class="tool-panel">
+            <div id="Painter">
+                <input type="color" id="colorPicker">
+                <button id="EraserBtn">Borrador</button>
+                <button id="clearBtn">Limpiar</button>
+            </div>
+            <div id="Size">
+                <label for="brushSize">Tamaño del pincel/borrador:</label>
+                <input type="range" id="brushSize" min="1" max="25" value="10">
+            </div>
+            <div id="Selector">
+                <h2>Maps:</h2>
+                <select id="fileSelector">
+                    <option value="none.png">------</option>
+                    <option value="Anadoulou_City.png">Anadoulou_City</option>
+                    <!-- Más opciones aquí -->
+                </select>
+            </div>
+            <div id="icons">
+                <h2>Troops:</h2>
+                <img src="/media/icons/Hashashins.png" class="icon" data-icon="/media/icons/Hashashins.png">
+                <!-- Más iconos aquí -->
             </div>
         </div>
-        <footer>
-            <p>Made by JaviSantir</p>
-        </footer>
-        
-        <script src="script.js"></script>
-    </body>
+        <div class="canvas-container">
+            <canvas id="imageCanvas"></canvas>
+            <canvas id="Board"></canvas>
+        </div>
+    </div>
+
+    <footer>
+        <p>Made by JaviSantir</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
 </html>

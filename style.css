@@ -1,28 +1,56 @@
+/* Reset de estilos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos para el cuerpo del documento */
 body {
     margin: 0;
-    left: 0;
     background-color: #f0f0f0;
     height: 100vh;
     font-family: Arial, sans-serif;
 }
 
-.container {
-    display: flex; /* Usa flexbox */
-    justify-content: center; /* Centra los elementos horizontalmente */
-    align-items: start; /* Alinea los elementos al inicio verticalmente */
-    height: 100vh; /* Altura total de la ventana */
-    padding: 20px; /* Añade algo de espacio alrededor */
+/* Estilos para el encabezado */
+header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
+h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+/* Estilos para el contenedor principal */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    height: 100vh;
+    padding: 20px;
+}
+
+/* Estilos para el panel de herramientas */
 .tool-panel {
     display: flex;
-    flex-direction: column; /* Organiza los elementos en columna */
-    margin-left: 20px; /* Añade un margen a la izquierda */
+    flex-direction: column;
+    margin-left: 20px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
+/* Estilos para el lienzo */
 .canvas-container {
     position: relative;
-    flex-grow: 1; /* Permite que el canvas ocupe el espacio restante */
+    flex-grow: 1;
 }
 
 #imageCanvas, #Board {
@@ -33,22 +61,56 @@ body {
     border: 1px solid black;
 }
 
-input[type="color"], input[type="file"], button {
+/* Estilos para los iconos */
+#icons img {
+    cursor: pointer;
+    margin: 5px;
+    width: 50px; /* Ajustar según el tamaño deseado */
+    height: 50px; /* Ajustar según el tamaño deseado */
+}
+
+/* Estilos para los botones y controles */
+input[type="color"], input[type="file"], button, #fileSelector {
     margin: 10px;
-    height: 30px; /* Asegúrate de que todos los controles tengan la misma altura */
-    vertical-align: middle; /* Alinea verticalmente si es necesario */
+    height: 30px;
+    vertical-align: middle;
 }
 
 button.active {
-    background-color: #4CAF50; /* Verde claro para indicar que está activo */
+    background-color: #4CAF50;
     color: white;
 }
 
+/* Estilos para los iconos seleccionados */
+#icons img.selected {
+    border: #4CAF50 4px solid;
+    color: white; /* Cambia el color del texto al hacer clic */
+}
+
+
+/* Estilos para el tamaño del pincel */
 #Size {
     padding-top: 20px;
 }
 
 #brushSize {
-    width: 80%; /* Ajusta el ancho según tus preferencias */
-    margin: 10px 0; /* Espaciado */
+    width: 80%;
+    margin: 10px 0;
+}
+
+#fileSelector {
+    width: 200px;
+    height: 40px;
+    font-size: 16px;
+}
+
+/* Estilos para el pie de página */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
