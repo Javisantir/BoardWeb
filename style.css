@@ -62,7 +62,7 @@ h1 {
 }
 
 /* Estilos para los iconos */
-#icons img {
+#icons svg {
     cursor: pointer;
     margin: 5px;
     width: 50px; /* Ajustar según el tamaño deseado */
