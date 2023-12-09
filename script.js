@@ -54,26 +54,18 @@ drawingCanvas.addEventListener('click', function(event) {
 
 // Cargar imagen de fondo
 fileSelector.addEventListener('change', function() {
-    const selectedFile = fileSelector.files[0];
-    const reader = new FileReader();
-
-    reader.onload = function(e) {
-        currentImageSrc = e.target.result;
-        const img = new Image();
-        img.onload = function() {
-            const newSize = adjustImageSize(img.width, img.height, window.innerWidth, window.innerHeight);
-            imageCanvas.width = newSize.width;
-            imageCanvas.height = newSize.height;
-            drawingCanvas.width = newSize.width;
-            drawingCanvas.height = newSize.height;
-            imageCtx.drawImage(img, 0, 0, newSize.width, newSize.height);
-        };
-        img.src = currentImageSrc;
+    const selectedFile = fileSelector.value;
+    currentImageSrc = 'media/maps/' + selectedFile;
+    const img = new Image();
+    img.onload = function() {
+        const newSize = adjustImageSize(img.width, img.height, window.innerWidth, window.innerHeight);
+        imageCanvas.width = newSize.width;
+        imageCanvas.height = newSize.height;
+        drawingCanvas.width = newSize.width;
+        drawingCanvas.height = newSize.height;
+        imageCtx.drawImage(img, 0, 0, newSize.width, newSize.height);
     };
-
-    if (selectedFile) {
-        reader.readAsDataURL(selectedFile);
-    }
+    img.src = currentImageSrc;
 });
 
 // Funcionalidad del borrador
