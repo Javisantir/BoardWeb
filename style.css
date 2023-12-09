@@ -82,9 +82,8 @@ button.active {
 }
 
 /* Estilos para los iconos seleccionados */
-#icons img.selected {
-    border: #4CAF50 4px solid;
-    color: white; /* Cambia el color del texto al hacer clic */
+.icon.selected {
+    border: 5px solid rgb(64, 151, 75); /* Cambia 'blue' por el color que prefieras */
 }
 
 

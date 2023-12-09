@@ -7,16 +7,33 @@ const eraserBtn = document.getElementById('EraserBtn');
 const clearBtn = document.getElementById('clearBtn');
 const brushSizeSlider = document.getElementById('brushSize');
 const fileSelector = document.getElementById('fileSelector');
+
 let selectedIcon = null;
 let currentImageSrc = '';
 let painting = false;
 let isErasing = false;
 
+
 document.querySelectorAll('.icon').forEach(icon => {
     icon.addEventListener('click', function() {
-        selectedIcon = this.getAttribute('data-icon');
+        if (this.classList.contains('selected')) {
+            // Si el icono ya está seleccionado, deseleccionarlo
+            this.classList.remove('selected');
+            selectedIcon = null; // O asigna un valor predeterminado si lo necesitas
+        } else {
+            // Elimina la clase 'selected' de todos los iconos
+            document.querySelectorAll('.icon').forEach(i => i.classList.remove('selected'));
+
+            let aux = this.getAttribute('data-icon');
+            selectedIcon = aux.toString().replace("/media/icons/", "media/icons/");
+
+            // Agrega la clase 'selected' al icono actual
+            this.classList.add('selected');
+        }
     });
 });
+
+
 
 drawingCanvas.addEventListener('click', function(event) {
     if (selectedIcon) {
