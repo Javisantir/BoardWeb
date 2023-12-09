@@ -1,56 +1,54 @@
 body {
     margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    left: 0;
     background-color: #f0f0f0;
     height: 100vh;
     font-family: Arial, sans-serif;
 }
 
 .container {
-    width: 80%;
-    text-align: center;
-}
-
-h1 {
-    margin-bottom: 20px;
-}
-
-.canvas-container {
-    display: flex;
-    height: 60vh;
-}
-
-canvas {
-    border: 1px solid black;
-    background-color: white;
-    width: 80%;
-    height: 100%;
+    display: flex; /* Usa flexbox */
+    justify-content: center; /* Centra los elementos horizontalmente */
+    align-items: start; /* Alinea los elementos al inicio verticalmente */
+    height: 100vh; /* Altura total de la ventana */
+    padding: 20px; /* Añade algo de espacio alrededor */
 }
 
 .tool-panel {
-    width: 20%;
-    padding: 10px;
-    box-sizing: border-box;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: column; /* Organiza los elementos en columna */
+    margin-left: 20px; /* Añade un margen a la izquierda */
 }
 
-h2 {
-    margin: 10px 0;
+.canvas-container {
+    position: relative;
+    flex-grow: 1; /* Permite que el canvas ocupe el espacio restante */
 }
 
-input[type="color"] {
-    margin-top: 10px;
+#imageCanvas, #Board {
+    position: absolute;
+    max-width: 140vh;
+    top: 0;
+    left: 0;
+    border: 1px solid black;
 }
 
-input[type="file"] {
-    margin: 10px 0;
+input[type="color"], input[type="file"], button {
+    margin: 10px;
+    height: 30px; /* Asegúrate de que todos los controles tengan la misma altura */
+    vertical-align: middle; /* Alinea verticalmente si es necesario */
 }
 
-button {
-    margin-top: 10px;
-    cursor: pointer;
+button.active {
+    background-color: #4CAF50; /* Verde claro para indicar que está activo */
+    color: white;
+}
+
+#Size {
+    padding-top: 20px;
+}
+
+#brushSize {
+    width: 80%; /* Ajusta el ancho según tus preferencias */
+    margin: 10px 0; /* Espaciado */
 }
