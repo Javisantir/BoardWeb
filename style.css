@@ -87,10 +87,12 @@ button.active {
     color: white; /* Cambia el color del texto al hacer clic */
 }
 
+
 #brushSize {
     width: 80%;
     margin: 10px 0;
 }
+
 
 #fileSelector {
     width: 200px;
