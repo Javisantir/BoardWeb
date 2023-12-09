@@ -7,7 +7,6 @@ const eraserBtn = document.getElementById('EraserBtn');
 const clearBtn = document.getElementById('clearBtn');
 const brushSizeSlider = document.getElementById('brushSize');
 const fileSelector = document.getElementById('fileSelector');
-const icons = document.querySelectorAll('.icon');
 let selectedIcon = null;
 let currentImageSrc = '';
 let painting = false;
@@ -16,21 +15,8 @@ let isErasing = false;
 document.querySelectorAll('.icon').forEach(icon => {
     icon.addEventListener('click', function() {
         selectedIcon = this.getAttribute('data-icon');
-        if (this.classList.contains('selected')) {
-            this.classList.remove('selected');
-            selectedIcon = null; // Elimina la selección si se hace clic nuevamente en el mismo icono
-        } else {
-            icons.forEach(icon => {
-                icon.classList.remove('selected');
-            });
-            this.classList.add('selected');
-            selectedIcon = this.getAttribute('data-icon');
-        }
     });
 });
-
-// Agrega el código JavaScript anterior aquí
-
 
 drawingCanvas.addEventListener('click', function(event) {
     if (selectedIcon) {

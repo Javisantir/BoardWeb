@@ -87,12 +87,6 @@ button.active {
     color: white; /* Cambia el color del texto al hacer clic */
 }
 
-
-/* Estilos para el tamaño del pincel */
-#Size {
-    padding-top: 20px;
-}
-
 #brushSize {
     width: 80%;
     margin: 10px 0;
