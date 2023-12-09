@@ -38,7 +38,7 @@ drawingCanvas.addEventListener('click', function(event) {
 
 fileSelector.addEventListener('change', function() {
     const selectedFile = fileSelector.value;
-    currentImageSrc = '/images/' + selectedFile;
+    currentImageSrc = '/media/maps/' + selectedFile;
     const img = new Image();
     img.onload = function() {
         const newSize = adjustImageSize(img.width, img.height, window.innerWidth, window.innerHeight);
