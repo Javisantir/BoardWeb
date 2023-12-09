@@ -1,6 +1,7 @@
 const canvas = document.getElementById('pizarra');
 const ctx = canvas.getContext('2d');
 const fileInput = document.getElementById('fileInput');
+const colorPicker = document.getElementById('colorPicker');
 
 function resizeCanvas() {
     canvas.width = canvas.offsetWidth;
@@ -26,7 +27,7 @@ function draw(e) {
     if (!painting) return;
     ctx.lineWidth = 5;
     ctx.lineCap = 'round';
-    ctx.strokeStyle = 'black';
+    ctx.strokeStyle = colorPicker.value;
 
     const rect = canvas.getBoundingClientRect();
     const x = e.clientX - rect.left;

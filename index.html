@@ -3,14 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pizarra Digital - Tactics</title>
+    <title>DigitalBoard V1</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Tactics</h1>
+        <h1>Digital Board V1</h1>
+        <div class="canvas-container">
+            <canvas id="pizarra"></canvas>
+            <div class="tool-panel">
+                <h2>Herramientas</h2>
+                <input type="color" id="colorPicker">
+            </div>
+        </div>
+        <button id="downloadBtn">Descargar Imagen</button>
         <input type="file" id="fileInput" accept="image/*">
-        <canvas id="pizarra"></canvas>
     </div>
     <script src="script.js"></script>
 </body>
