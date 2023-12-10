@@ -5,6 +5,14 @@
         "src": "media/icons/Hashashins.png"
       },
       {
+        "name": "AlemanesChetados",
+        "src": "media/icons/AlemanesChetados.png"
+      },
+      {
+        "name": "Orochi",
+        "src": "media/icons/Orochi.png"
+      },
+      {
         "name": "Modao",
         "src": "media/icons/MODAO.png"
       },
@@ -47,6 +55,54 @@
       {
         "name": "Falco",
         "src": "media/icons/Falco.png"
+      },
+      {
+        "name": "Monasticos",
+        "src": "media/icons/Monasticos.png"
+      },
+      {
+        "name": "Mariposas",
+        "src": "media/icons/Mariposas.png"
+      },
+      {
+        "name": "Husares",
+        "src": "media/icons/Husares.png"
+      },
+      {
+        "name": "Catafract",
+        "src": "media/icons/Catafract.png"
+      },
+      {
+        "name": "Liao",
+        "src": "media/icons/LIAO.png"
+      },
+      {
+        "name": "Gendarmes",
+        "src": "media/icons/Gendarmes.png"
+      },
+      {
+        "name": "Sargentos Alabarderos",
+        "src": "media/icons/SA.png"
+      },
+      {
+        "name": "CV",
+        "src": "media/icons/CV.png"
+      },
+      {
+        "name": "Berserkers",
+        "src": "media/icons/Berserkers.png"
+      },
+      {
+        "name": "Guardis de Honor",
+        "src": "media/icons/GH.png"
+      },
+      {
+        "name": "Paladines",
+        "src": "media/icons/Paladines.png"
+      },
+      {
+        "name": "Hombres de armas",
+        "src": "media/icons/HA.png"
       }
     ]
   }

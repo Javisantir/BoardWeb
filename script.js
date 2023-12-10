@@ -49,6 +49,15 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 });
 
+colorPicker.addEventListener('click', function() {
+    document.querySelectorAll('.icon.selected, .weapon.selected').forEach(selected => {
+        selected.classList.remove('selected');
+    });
+
+    selectedIcon = null;
+    selectedText = null;
+});
+
 document.addEventListener("DOMContentLoaded", function () {
     fetch('json/maps.json')
         .then(response => response.json())
@@ -117,18 +126,34 @@ function attachIconClickEvents() {
 }
 
 function attachWeaponsClickEvents() {
-    document.querySelectorAll('.weapon').forEach(icon => {
-        icon.addEventListener('click', function() {
+    document.querySelectorAll('.weapon').forEach(weapon => {
+        weapon.addEventListener('click', function() {
+            // Deseleccionar cualquier arma o icono seleccionado previamente
+            document.querySelectorAll('.icon.selected, .weapon.selected').forEach(selected => {
+                selected.classList.remove('selected');
+            });
+
+            // Si el arma ya estaba seleccionada, la deselecciona
             if (this.classList.contains('selected')) {
                 this.classList.remove('selected');
                 selectedIcon = null;
             } else {
-                document.querySelectorAll('.icon').forEach(i => i.classList.remove('selected'));
+                // Seleccionar la nueva arma y actualizar el icono seleccionado
+                this.classList.add('selected');
                 let aux = this.getAttribute('data-icon');
                 selectedIcon = aux.toString().replace("/media/icons/", "media/icons/");
-                console.log(selectedIcon);
-                this.classList.add('selected');
+
+                // Restablecer el estado de borrador si está activo
+                if (isErasing) {
+                    isErasing = false;
+                    drawingCtx.globalCompositeOperation = 'source-over';
+                    drawingCtx.strokeStyle = colorPicker.value;
+                    eraserBtn.classList.remove('active');
+                    colorPicker.classList.remove('inactive');
+                }
             }
+
+            console.log(selectedIcon);
         });
     });
 }
