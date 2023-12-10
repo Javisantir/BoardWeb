@@ -1,47 +1,19 @@
-/* Reset de estilos */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Google Font */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
-/* Estilos para el cuerpo del documento */
 body {
     font-family: 'Roboto', sans-serif;
     background-color: #f0f0f0;
     height: 100vh;
-    color: #333; /* Color de texto general */
+    color: #333; 
     margin-bottom: 100px;
 }
 
-#toolPanel.minimized {
-    width: 25px; /* O cualquier tamaño mínimo que desees */
-    height: 25px; /* O cualquier tamaño mínimo que desees */
-    opacity: 0.5;
-    overflow: hidden; /* Oculta el contenido que no quepa en el tamaño mínimo */
-}
-
-#Painter {
-    background-color: white;
-    color: #333;
-    padding: 5px 10px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-#minimizeButton {
-    /* Estilos para el botón de minimizar (ajústalos según tus necesidades) */
-    cursor: pointer;
-    position: absolute;
-    top: 5px;
-    right: 5px;
-}
-
-/* Estilos para el encabezado */
 header {
     background: linear-gradient(135deg, #485563, #29323c);
     color: white;
@@ -50,12 +22,15 @@ header {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
-
 h1 {
     font-size: 2.5em; /* Tamaño de fuente para el encabezado */
 }
 
-/* Estilos para el contenedor principal */
+p {
+    font-size: 12px;
+    color: #666;
+}
+
 .container {
     display: flex;
     justify-content: center;
@@ -64,31 +39,11 @@ h1 {
     padding: 20px;
 }
 
-#Selector {
-    background-color: white;
-    color: #333;
-    padding: 5px 10px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
 #toolPanel {
-    cursor: move; /* Cambia el cursor a indicar movimiento */
-}
-
-#fileSelector {
-    width: 90%;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);;
-    cursor: pointer;
-}
-
-select:hover {
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    cursor: move; 
 }
 
 
-/* Estilos para el panel de herramientas */
 .tool-panel {
     z-index: 3;
     position: fixed;
@@ -102,21 +57,60 @@ select:hover {
     max-width: 20%;
 }
 
-/* Estilos para el lienzo */
-.canvas-container {
-    position: relative;
-    flex-grow: 1;
-    margin-bottom: 50px;
+#toolPanel.minimized {
+    width: 25px; 
+    height: 25px; 
+    opacity: 0.5;
+    overflow: hidden; 
 }
 
-#imageCanvas, #Board {
-    position: absolute;
-    max-width: 100%;
-    top: 0;
-    left: 0;
+#Painter {
+    background-color: white;
+    color: #333;
+    padding: 5px 10px;
+    border-radius: 4px;
     border: 1px solid #ccc;
-    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#Painter input[type="color"] {
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px;
+    transition: border-color 0.3s ease;
+
+    /* Estilos para quitar el aspecto predeterminado en algunos navegadores */
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+#Painter input[type="color"]:hover {
+    border-color: #4CAF50; /* Cambia el color del borde al pasar el ratón */
+}
+
+#Painter input[type="color"]:focus {
+    outline: none;
+    border-color: #367c39; /* Cambia el color del borde al hacer clic */
+}
+
+#Selector {
+    background-color: white;
+    color: #333;
+    padding: 5px 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#fileSelector {
+    width: 90%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);;
+    cursor: pointer;
+}
+
+select:hover {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
 #icons {
@@ -170,27 +164,6 @@ button:hover {
     border: 2px solid green;
 }
 
-#Painter input[type="color"] {
-    cursor: pointer;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 5px;
-    transition: border-color 0.3s ease;
-
-    /* Estilos para quitar el aspecto predeterminado en algunos navegadores */
-    -webkit-appearance: none;
-    appearance: none;
-}
-
-#Painter input[type="color"]:hover {
-    border-color: #4CAF50; /* Cambia el color del borde al pasar el ratón */
-}
-
-#Painter input[type="color"]:focus {
-    outline: none;
-    border-color: #367c39; /* Cambia el color del borde al hacer clic */
-}
-
 /* Estilos para el control deslizante */
 input[type="range"] {
     -webkit-appearance: none;
@@ -242,8 +215,30 @@ input[type="range"]::-webkit-slider-thumb {
     border: 1px solid #ccc;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+#minimizeButton {
+    cursor: pointer;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
 
-/* Estilos para el pie de página */
+.canvas-container {
+    position: relative;
+    flex-grow: 1;
+    margin-bottom: 50px;
+    z-index: 1;
+}
+
+#imageCanvas, #Board {
+    position: absolute;
+    max-width: 100%;
+    top: 0;
+    left: 0;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px; /* Bordes redondeados */
+}
+
 footer {
     background-color: #333;
     color: white;
@@ -254,7 +249,6 @@ footer {
     width: 100%;
 }
 
-p {
-    font-size: 12px;
-    color: #666;
-}
+
+
+

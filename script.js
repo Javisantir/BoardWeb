@@ -12,6 +12,7 @@ const textInput = document.getElementById('textInput');
 const submitTextBtn = document.getElementById('submitText');
 const textIconsContainer = document.getElementById('text-icons-container');
 const textSizeSlider = document.getElementById('textSizeSlider');
+const canvasDisclaimer = document.getElementById('CanvasDisclaimer');
 
 let textSize = 16; // Valor inicial del tamaño del texto
 let selectedIcon = null;
@@ -150,6 +151,9 @@ fileSelector.addEventListener('change', function() {
         drawingCanvas.height = newSize.height;
         imageCtx.drawImage(img, 0, 0, newSize.width, newSize.height);
     };
+
+    canvasDisclaimer.style.display = 'none';
+
     img.src = currentImageSrc;
 });
 

@@ -36,7 +36,16 @@
             <br>
             <div id="icons">
                 <h2>Troops:</h2>
-                <label for="iconSize">Tamaño de iconos:</label>
+                <label for="iconSize">Troops size:</label>
+                <input type="range" id="iconSize" min="10" max="100" value="50">
+                <br>
+                <img src="media/icons/Hashashins.png" class="icon" data-icon="/media/icons/Hashashins.png">
+                <!-- Más iconos aquí -->
+            </div>
+            <br>
+            <div id="icons"> <!--TODO JS-->
+                <h2>Weapons:</h2>
+                <label for="iconSize">Icons size:</label>
                 <input type="range" id="iconSize" min="10" max="100" value="50">
                 <br>
                 <img src="media/icons/Hashashins.png" class="icon" data-icon="/media/icons/Hashashins.png">
@@ -53,13 +62,15 @@
                 <input type="text" id="textInput">
                 <p>(Text must be separated by spaces. Example: HELLO GOODBYE -> 2 TEXT ICONS)</p>
                 <button id="submitText">Crear Iconos de Texto</button>
+                <div id="text-icons-container"></div>
             </div>
-            <div id="text-icons-container"></div>
-        </div>
+
+        </div>        
         <div class="canvas-container">
             <canvas id="imageCanvas"></canvas>
             <canvas id="Board"></canvas>
         </div>
+        <h3 id="CanvasDisclaimer">Select a Map on the Menu to start</h3>
     </div>
 
     <footer>
