@@ -13,19 +13,18 @@
     </header>
 
     <div class="container">
-        <div class="tool-panel">
+        <div class="tool-panel" id="toolPanel">
+            <button id="minimizeButton">-</button>
             <div id="Painter">
                 <input type="color" id="colorPicker">
                 <button id="EraserBtn">Eraser</button>
                 <button id="clearBtn">Clean ALL</button>
-            </div>
-
-            <div id="Size">
-                <label for="brushSize">Brush/Eraser Size:</label>
-                <input type="range" id="brushSize" min="1" max="25" value="10">
+                <div id="Size">
+                    <label for="brushSize" class="interactive">Brush/Eraser Size:</label>
+                    <input type="range" id="brushSize" min="1" max="25" value="10">
+                </div>
             </div>
             <br>
-
             <div id="Selector">
                 <h2>Maps:</h2>
                 <select id="fileSelector">
@@ -35,7 +34,6 @@
                 </select>
             </div>
             <br>
-            
             <div id="icons">
                 <h2>Troops:</h2>
                 <label for="iconSize">Tamaño de iconos:</label>
@@ -45,7 +43,6 @@
                 <!-- Más iconos aquí -->
             </div>
             <br>
-
             <div id="text-input-section">
                 <h2>Names:</h2>
                 <div id="text-size">

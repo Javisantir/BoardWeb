@@ -14,6 +14,31 @@ body {
     background-color: #f0f0f0;
     height: 100vh;
     color: #333; /* Color de texto general */
+    margin-bottom: 100px;
+}
+
+#toolPanel.minimized {
+    width: 25px; /* O cualquier tamaño mínimo que desees */
+    height: 25px; /* O cualquier tamaño mínimo que desees */
+    opacity: 0.5;
+    overflow: hidden; /* Oculta el contenido que no quepa en el tamaño mínimo */
+}
+
+#Painter {
+    background-color: white;
+    color: #333;
+    padding: 5px 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#minimizeButton {
+    /* Estilos para el botón de minimizar (ajústalos según tus necesidades) */
+    cursor: pointer;
+    position: absolute;
+    top: 5px;
+    right: 5px;
 }
 
 /* Estilos para el encabezado */
@@ -48,6 +73,10 @@ h1 {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+#toolPanel {
+    cursor: move; /* Cambia el cursor a indicar movimiento */
+}
+
 #fileSelector {
     width: 90%;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);;
@@ -61,6 +90,8 @@ select:hover {
 
 /* Estilos para el panel de herramientas */
 .tool-panel {
+    z-index: 3;
+    position: fixed;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -75,6 +106,7 @@ select:hover {
 .canvas-container {
     position: relative;
     flex-grow: 1;
+    margin-bottom: 50px;
 }
 
 #imageCanvas, #Board {
@@ -200,6 +232,15 @@ input[type="range"]::-webkit-slider-thumb {
     border-radius: 4px;
     cursor: pointer;
     background-color: #f9f9f9; /* Fondo ligero para los iconos de texto */
+}
+
+#text-input-section {
+    background-color: white;
+    color: #333;
+    padding: 5px 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* Estilos para el pie de página */

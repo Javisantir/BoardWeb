@@ -21,6 +21,51 @@ let painting = false;
 let isErasing = false;
 let iconSize = 50; // Valor inicial para el tamaño del icono
 
+const toolPanel = document.getElementById('toolPanel');
+let isDragging = false;
+let dragStartX, dragStartY;
+
+const minimizeButton = document.getElementById('minimizeButton');
+
+minimizeButton.addEventListener('click', function() {
+    toolPanel.classList.toggle('minimized');
+});
+
+toolPanel.addEventListener('mousedown', function(e) {
+    // Comprobar si el clic es en un elemento interactivo
+    if (e.target.classList.contains('interactive')) {
+        // Ignorar el evento de arrastre
+        return;
+    }
+
+    isDragging = true;
+    let rect = toolPanel.getBoundingClientRect();
+    dragStartX = e.clientX - rect.left;
+    dragStartY = e.clientY - rect.top;
+    toolPanel.style.position = 'absolute';
+});
+
+document.addEventListener('mousemove', function(e) {
+    if (isDragging) {
+        let xPosition = e.clientX - dragStartX;
+        let yPosition = e.clientY - dragStartY + window.scrollY; // Incluye el desplazamiento vertical
+
+        toolPanel.style.left = xPosition + 'px';
+        toolPanel.style.top = yPosition + 'px';
+    }
+});
+
+document.addEventListener('mouseup', function() {
+    isDragging = false;
+});
+
+
+window.addEventListener('resize', function() {
+    toolPanel.style.left = '';
+    toolPanel.style.top = '';
+});
+
+
 iconSizeSlider.addEventListener('input', function() {
     iconSize = this.value;
 });
@@ -117,6 +162,7 @@ eraserBtn.addEventListener('click', function() {
         colorPicker.classList.add('inactive'); // Añadir clase al input de color
     } else {
         drawingCtx.globalCompositeOperation = 'source-over';
+        drawingCtx.strokeStyle = colorPicker.value;
         eraserBtn.classList.remove('active');
         colorPicker.classList.remove('inactive'); // Quitar clase del input de color
     }
@@ -126,9 +172,7 @@ function draw(e) {
     if (!painting) return;
     drawingCtx.lineCap = 'round';
     drawingCtx.lineWidth = brushSizeSlider.value;
-
-    // La siguiente línea podría no ser necesaria si estás utilizando 'globalCompositeOperation'
-    // drawingCtx.strokeStyle = isErasing ? 'rgba(0,0,0,0)' : colorPicker.value;
+    drawingCtx.strokeStyle = colorPicker.value;
 
     const rect = drawingCanvas.getBoundingClientRect();
     const scaleX = drawingCanvas.width / rect.width;
