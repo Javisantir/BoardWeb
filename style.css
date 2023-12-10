@@ -9,9 +9,9 @@
 body {
     font-family: 'Roboto', sans-serif;
     background-color: #f0f0f0;
-    height: 100vh;
+    /* height: 100vh; Esta línea podría estar causando el problema, considera removerla o ajustarla */
     color: #333; 
-    margin-bottom: 100px;
+    /* margin-bottom: 100px; Esto también podría estar contribuyendo al problema, ajústalo según sea necesario */
 }
 
 header {
@@ -35,18 +35,18 @@ p {
     display: flex;
     justify-content: center;
     align-items: start;
-    height: 100vh;
     padding: 20px;
-}
-
-#toolPanel {
-    cursor: move; 
 }
 
 
 .tool-panel {
+    position: fixed; 
+    top: 90px; 
+    right: 20px; 
+    max-width: 20%;
+    max-height: 90%;
+    overflow-y: auto; 
     z-index: 3;
-    position: fixed;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -135,6 +135,19 @@ select:hover {
 
 #icons img:hover {
     transform: scale(1.1);
+}
+
+#weapons img {
+    cursor: pointer;
+    margin: 5px;
+    width: 45px;
+    height: 45px;
+    border-radius: 4px;
+    transition: transform 0.3s ease;
+}
+
+#weapons img:hover {
+transform: scale(1.1);
 }
 
 /* Estilos para los botones y controles */

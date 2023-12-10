@@ -1,0 +1,47 @@
+{
+    "weapons": [
+      {
+        "name": "DualBlade",
+        "src": "media/icons/weapons/Asesino.png"
+      },
+      {
+        "name": "Bow",
+        "src": "media/icons/weapons/Bow.png"
+      },
+      {
+        "name": "Cimitarra",
+        "src": "media/icons/weapons/Cimitarra.png"
+      }
+      ,
+      {
+        "name": "Lanza",
+        "src": "media/icons/weapons/Lanza.png"
+      }
+      ,
+      {
+        "name": "LongSword",
+        "src": "media/icons/weapons/LS.png"
+      },
+      {
+        "name": "Musket",
+        "src": "media/icons/weapons/Mosquete.png"
+      },
+      {
+        "name": "PoleAxe",
+        "src": "media/icons/weapons/Poleaxe.png"
+      },
+      {
+        "name": "SB",
+        "src": "media/icons/weapons/SB.png"
+      },
+      {
+        "name": "SS",
+        "src": "media/icons/weapons/SS.png"
+      },
+      {
+        "name": "Maul",
+        "src": "media/icons/weapons/Maul.png"
+      }
+    ]
+  }
+  

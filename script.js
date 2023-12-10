@@ -12,7 +12,6 @@ const textInput = document.getElementById('textInput');
 const submitTextBtn = document.getElementById('submitText');
 const textIconsContainer = document.getElementById('text-icons-container');
 const textSizeSlider = document.getElementById('textSizeSlider');
-const canvasDisclaimer = document.getElementById('CanvasDisclaimer');
 
 let textSize = 16; // Valor inicial del tamaño del texto
 let selectedIcon = null;
@@ -28,62 +27,112 @@ let dragStartX, dragStartY;
 
 const minimizeButton = document.getElementById('minimizeButton');
 
+document.addEventListener("DOMContentLoaded", function () {
+    fetch("json/icons.json")
+        .then((response) => response.json())
+        .then((data) => {
+            const iconsContainer = document.getElementById("icons");
+
+            data.icons.forEach((icon) => {
+                const img = document.createElement("img");
+                img.src = icon.src;
+                img.alt = icon.name;
+                img.className = "icon";
+                img.dataset.icon = icon.src; 
+                iconsContainer.appendChild(img);
+            });
+
+            attachIconClickEvents();
+        })
+        .catch((error) => {
+            console.error("Error al cargar el archivo JSON: ", error);
+        });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    fetch('json/maps.json')
+        .then(response => response.json())
+        .then(data => {
+            const fileSelector = document.getElementById('fileSelector');
+
+            data.maps.forEach(map => {
+                const option = document.createElement('option');
+                option.value = map.value;
+                option.textContent = map.text;
+                fileSelector.appendChild(option);
+            });
+        })
+        .catch(error => {
+            console.error('Error al cargar el archivo JSON:', error);
+        });
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    fetch("json/weapons.json")
+        .then((response) => response.json())
+        .then((data) => {
+            const weaponsContainer = document.getElementById("weapons");
+
+            data.weapons.forEach((weapon) => {
+                const img = document.createElement("img");
+                img.src = weapon.src;
+                img.alt = weapon.name;
+                img.className = "weapon";
+                img.dataset.icon = weapon.src; 
+                weaponsContainer.appendChild(img);
+            });
+
+            attachWeaponsClickEvents();
+        })
+        .catch((error) => {
+            console.error("Error al cargar el archivo JSON: ", error);
+        });
+});
+
+
 minimizeButton.addEventListener('click', function() {
     toolPanel.classList.toggle('minimized');
 });
-
-toolPanel.addEventListener('mousedown', function(e) {
-    // Comprobar si el clic es en un elemento interactivo
-    if (e.target.classList.contains('interactive')) {
-        // Ignorar el evento de arrastre
-        return;
-    }
-
-    isDragging = true;
-    let rect = toolPanel.getBoundingClientRect();
-    dragStartX = e.clientX - rect.left;
-    dragStartY = e.clientY - rect.top;
-    toolPanel.style.position = 'absolute';
-});
-
-document.addEventListener('mousemove', function(e) {
-    if (isDragging) {
-        let xPosition = e.clientX - dragStartX;
-        let yPosition = e.clientY - dragStartY + window.scrollY; // Incluye el desplazamiento vertical
-
-        toolPanel.style.left = xPosition + 'px';
-        toolPanel.style.top = yPosition + 'px';
-    }
-});
-
-document.addEventListener('mouseup', function() {
-    isDragging = false;
-});
-
-
-window.addEventListener('resize', function() {
-    toolPanel.style.left = '';
-    toolPanel.style.top = '';
-});
-
 
 iconSizeSlider.addEventListener('input', function() {
     iconSize = this.value;
 });
 
-document.querySelectorAll('.icon').forEach(icon => {
-    icon.addEventListener('click', function() {
-        if (this.classList.contains('selected')) {
-            this.classList.remove('selected');
-            selectedIcon = null;
-        } else {
-            document.querySelectorAll('.icon').forEach(i => i.classList.remove('selected'));
-            let aux = this.getAttribute('data-icon');
-            selectedIcon = aux.toString().replace("/media/icons/", "media/icons/");
-            this.classList.add('selected');
-        }
+function attachIconClickEvents() {
+    document.querySelectorAll('.icon').forEach(icon => {
+        icon.addEventListener('click', function() {
+            if (this.classList.contains('selected')) {
+                this.classList.remove('selected');
+                selectedIcon = null;
+            } else {
+                document.querySelectorAll('.icon').forEach(i => i.classList.remove('selected'));
+                let aux = this.getAttribute('data-icon');
+                selectedIcon = aux.toString().replace("/media/icons/", "media/icons/");
+                console.log(selectedIcon);
+                this.classList.add('selected');
+            }
+        });
     });
-});
+}
+
+function attachWeaponsClickEvents() {
+    document.querySelectorAll('.weapon').forEach(icon => {
+        icon.addEventListener('click', function() {
+            if (this.classList.contains('selected')) {
+                this.classList.remove('selected');
+                selectedIcon = null;
+            } else {
+                document.querySelectorAll('.icon').forEach(i => i.classList.remove('selected'));
+                let aux = this.getAttribute('data-icon');
+                selectedIcon = aux.toString().replace("/media/icons/", "media/icons/");
+                console.log(selectedIcon);
+                this.classList.add('selected');
+            }
+        });
+    });
+}
+
 
 submitTextBtn.addEventListener('click', function() {
     const words = textInput.value.split(' ');
@@ -151,8 +200,6 @@ fileSelector.addEventListener('change', function() {
         drawingCanvas.height = newSize.height;
         imageCtx.drawImage(img, 0, 0, newSize.width, newSize.height);
     };
-
-    canvasDisclaimer.style.display = 'none';
 
     img.src = currentImageSrc;
 });
