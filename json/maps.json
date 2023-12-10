@@ -1,6 +1,16 @@
 {
     "maps": [
-        { "value": "none.png", "text": "------" },
-        { "value": "Anadoulou_City.png", "text": "Anadoulou City" }
+        { "value": "none.png", "text": "---WorldMaps---" },
+        { "value": "OSTARIA.png", "text": "OSTARIA" },
+        { "value": "SouthBorderlands.png", "text": "SouthBorderlands" },
+        { "value": "NorthBorderlands.png", "text": "NorthBorderlands" },
+        { "value": "Ungverija.png", "text": "Ungverija" },
+        { "value": "none.png", "text": "---Cities---" },
+        { "value": "Augolia2D.png", "text": "Augolia 2D" },
+        { "value": "Augolia3D.jpg", "text": "Augolia 3D" },
+        { "value": "Reginopolis 2D.png", "text": "Reginopolis 2D" },
+        { "value": "Reginopolis 3D.png", "text": "Reginopolis 3D" },
+        { "value": "Anadoulou_City.png", "text": "Anadoulou City 3D" },
+        { "value": "none.png", "text": "---Fortress---" }
     ]
 }

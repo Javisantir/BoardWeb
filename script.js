@@ -186,23 +186,6 @@ drawingCanvas.addEventListener('mousedown', startPosition);
 drawingCanvas.addEventListener('mouseup', finishedPosition);
 drawingCanvas.addEventListener('mousemove', draw);
 
-// Funcionalidad para cargar imágenes de fondo
-fileSelector.addEventListener('change', function() {
-    const selectedFile = fileSelector.value;
-    currentImageSrc = 'media/maps/' + selectedFile;
-    
-    const img = new Image();
-    img.onload = function() {
-        const newSize = adjustImageSize(img.width, img.height, window.innerWidth, window.innerHeight);
-        imageCanvas.width = newSize.width;
-        imageCanvas.height = newSize.height;
-        drawingCanvas.width = newSize.width;
-        drawingCanvas.height = newSize.height;
-        imageCtx.drawImage(img, 0, 0, newSize.width, newSize.height);
-    };
-
-    img.src = currentImageSrc;
-});
 
 // Funcionalidades de borrador y limpieza
 eraserBtn.addEventListener('click', function() {
@@ -218,6 +201,25 @@ eraserBtn.addEventListener('click', function() {
         colorPicker.classList.remove('inactive'); // Quitar clase del input de color
     }
 });
+
+document.getElementById('mapUpload').addEventListener('change', function(event) {
+    if (event.target.files && event.target.files[0]) {
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+            const img = new Image();
+            img.onload = function() {
+                adjustImageSize(img.width, img.height, window.innerWidth, window.innerHeight);
+                imageCtx.clearRect(0, 0, imageCanvas.width, imageCanvas.height); // Limpiar el canvas antes de dibujar
+                imageCtx.drawImage(img, 0, 0, imageCanvas.width, imageCanvas.height);
+            };
+            img.src = e.target.result;
+        };
+
+        reader.readAsDataURL(event.target.files[0]);
+    }
+});
+
 
 function draw(e) {
     if (!painting) return;
@@ -244,17 +246,55 @@ clearBtn.addEventListener('click', function() {
     drawingCtx.clearRect(0, 0, drawingCanvas.width, drawingCanvas.height);
 });
 
-// Función para ajustar el tamaño de la imagen
 function adjustImageSize(imgWidth, imgHeight, maxWidth, maxHeight) {
+    // Establecer el tamaño mínimo como la mitad de la ventana
+    const minWidth = maxWidth / 2;
+    const minHeight = maxHeight / 2;
+
     let newWidth = imgWidth;
     let newHeight = imgHeight;
-    if (imgWidth > maxWidth || imgHeight > maxHeight) {
-        const ratio = Math.min(maxWidth / imgWidth, maxHeight / imgHeight);
-        newWidth = imgWidth * ratio;
-        newHeight = imgHeight * ratio;
+
+    // Ajustar el tamaño de la imagen para que sea al menos la mitad de la ventana
+    if (newWidth < minWidth) {
+        newWidth = minWidth;
+        newHeight = minWidth * (imgHeight / imgWidth);
     }
-    return { width: newWidth, height: newHeight };
+    if (newHeight < minHeight) {
+        newHeight = minHeight;
+        newWidth = minHeight * (imgWidth / imgHeight);
+    }
+
+    // Ajustar el tamaño de la imagen para que no sea mayor que la ventana
+    if (newWidth > maxWidth) {
+        newWidth = maxWidth;
+        newHeight = maxWidth * (imgHeight / imgWidth);
+    }
+    if (newHeight > maxHeight) {
+        newHeight = maxHeight;
+        newWidth = maxHeight * (imgWidth / imgHeight);
+    }
+
+    // Ajustar el tamaño del canvas
+    imageCanvas.width = newWidth;
+    imageCanvas.height = newHeight;
+    drawingCanvas.width = newWidth;
+    drawingCanvas.height = newHeight;
 }
+
+// Evento de cambio para el selector de archivos
+fileSelector.addEventListener('change', function() {
+    const selectedFile = fileSelector.value;
+    currentImageSrc = 'media/maps/' + selectedFile;
+    
+    const img = new Image();
+    img.onload = function() {
+        adjustImageSize(img.width, img.height, window.innerWidth, window.innerHeight);
+        imageCtx.drawImage(img, 0, 0, imageCanvas.width, imageCanvas.height);
+    };
+
+    img.src = currentImageSrc;
+});
+
 
 textSizeSlider.addEventListener('input', function() {
     textSize = this.value;
