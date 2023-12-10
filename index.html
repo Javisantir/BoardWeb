@@ -44,10 +44,18 @@
                 <input type="file" id="mapUpload" accept="image/*">
             </div>
             <br>
-            <h2>Troops:</h2>
-            <label for="iconSize">Troops size:</label>
-            <input type="range" id="iconSize" min="10" max="100" value="50">
-            <div id="icons"></div>
+            <div id="TroopsContainer">
+                <h2>Troops:</h2>
+                <label for="iconSize">Troops size:</label>
+                <input type="range" id="iconSize" min="10" max="100" value="50">
+                <div id="icons"></div>
+                <br>
+                <div id="IconUploader">
+                    <label for="iconUpload">Upload Troop:</label>
+                    <input type="file" id="iconUpload" accept="image/*">
+                </div>
+                <div id="uploadedIcons"></div>
+            </div>
             <br>
             <h2>Weapons:</h2>
             <label for="weaponSize">Weapons size:</label>

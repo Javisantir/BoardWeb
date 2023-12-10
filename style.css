@@ -94,6 +94,20 @@ p {
     border-color: #367c39; /* Cambia el color del borde al hacer clic */
 }
 
+#uploadedIcons .uploaded-icon {
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    margin: 5px;
+    border-radius: 4px;
+    transition: transform 0.3s ease;
+}
+
+#uploadedIcons .uploaded-icon:hover {
+    transform: scale(1.1);
+}
+
+
 #Selector {
     background-color: white;
     color: #333;
@@ -113,7 +127,7 @@ select:hover {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
-#icons {
+#TroopsContainer {
     background-color: white;
     color: #333;
     padding: 5px 10px;
@@ -122,6 +136,13 @@ select:hover {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     cursor: pointer;
 }
+
+#icons {
+    max-height: 150px;
+    overflow-y: auto; /* Habilita el desplazamiento vertical si el contenido excede la altura máxima */
+    /* Mantén los otros estilos que ya tienes para #icons */
+}
+
 
 /* Estilos para los iconos */
 #icons img {

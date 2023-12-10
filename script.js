@@ -27,6 +27,49 @@ let dragStartX, dragStartY;
 
 const minimizeButton = document.getElementById('minimizeButton');
 
+document.getElementById('iconUpload').addEventListener('change', function(event) {
+    if (event.target.files && event.target.files[0]) {
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+            const uploadedIconContainer = document.getElementById('uploadedIcons');
+            const img = document.createElement("img");
+            img.src = e.target.result;
+            img.className = "uploaded-icon";
+            uploadedIconContainer.appendChild(img);
+
+            img.addEventListener('click', function() {
+                selectedIcon = e.target.result; 
+            });
+        };
+
+        reader.readAsDataURL(event.target.files[0]);
+    }
+});
+
+// Función para dibujar la imagen seleccionada en el canvas
+function drawIconOnCanvas(x, y, iconSrc) {
+    const img = new Image();
+    img.onload = function() {
+        drawingCtx.drawImage(img, x - iconSize / 2, y - iconSize / 2, iconSize, iconSize);
+    };
+    img.src = iconSrc;
+}
+
+// Añade el evento de click en el canvas
+drawingCanvas.addEventListener('click', function(event) {
+    const rect = drawingCanvas.getBoundingClientRect();
+    const scaleX = drawingCanvas.width / rect.width;
+    const scaleY = drawingCanvas.height / rect.height;
+    const x = (event.clientX - rect.left) * scaleX;
+    const y = (event.clientY - rect.top) * scaleY;
+
+    if (selectedIcon) {
+        drawIconOnCanvas(x, y, selectedIcon);
+    }
+});
+
+
 document.addEventListener("DOMContentLoaded", function () {
     fetch("json/icons.json")
         .then((response) => response.json())
