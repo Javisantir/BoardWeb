@@ -1,0 +1,85 @@
+{
+        "troops":
+        [
+            {
+                "name": "Hashashins",
+                "src": "media/icons/Hashashins.png"
+            },
+            {
+                "name": "AlemanesChetados",
+                "src": "media/icons/AlemanesChetados.png"
+            },
+            {
+                "name": "Orochi",
+                "src": "media/icons/Orochi.png"
+            },
+            {
+                "name": "Modao",
+                "src": "media/icons/MODAO.png"
+            },
+            {
+                "name": "Varega",
+                "src": "media/icons/Varega.png"
+            },
+            {
+                "name": "Reapers",
+                "src": "media/icons/Reapers.png"
+            },
+            {
+                "name": "Shiladars",
+                "src": "media/icons/Shiladars.png"
+            },
+            {
+                "name": "ShieldMaids",
+                "src": "media/icons/ShieldMaids.png"
+            },
+            {
+                "name": "Tercio",
+                "src": "media/icons/Tercio.png"
+            },
+            {
+                "name": "Paves",
+                "src": "media/icons/Paves.png"
+            },
+            {
+                "name": "Dogs",
+                "src": "media/icons/Dogs.png"
+            },
+            {
+                "name": "Flames",
+                "src": "media/icons/Flames.png"
+            },
+            {
+                "name": "Shenji",
+                "src": "media/icons/Shenji.png"
+            },
+            {
+                "name": "Falco",
+                "src": "media/icons/Falco.png"
+            },
+            {
+                "name": "Monasticos",
+                "src": "media/icons/Monasticos.png"
+            },
+            {
+                "name": "Mariposas",
+                "src": "media/icons/Mariposas.png"
+            },
+            {
+                "name": "Husares",
+                "src": "media/icons/Husares.png"
+            },
+            {
+                "name": "Catafract",
+                "src": "media/icons/Catafract.png"
+            },
+            {
+                "name": "Liao",
+                "src": "media/icons/LIAO.png"
+            },
+            {
+                "name": "Gendarmes",
+                "src": "media/icons/Gendarmes.png"
+            }
+        ]
+}

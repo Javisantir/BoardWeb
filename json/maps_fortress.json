@@ -1,0 +1,8 @@
+{
+    "maps":
+    [
+        { "value": "none.png", "text": "---" },
+        { "value": "Anadoulou Fortress 3d BACK.png", "text": "Anadoulou Fortress 3D Back" },
+        { "value": "Anadoulou Fortress 3D FRONT.png", "text": "Anadoulou Fortress 3D Front" }
+    ]
+}

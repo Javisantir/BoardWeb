@@ -1,0 +1,8 @@
+{
+    "maps":
+    [
+        { "value": "none.png", "text": "---" },
+        { "value": "TW Village 1.webp", "text": "TW VILLAGE 1" },
+        { "value": "TW Village WestWood.webp", "text": "TW WestWood" }
+    ]
+}

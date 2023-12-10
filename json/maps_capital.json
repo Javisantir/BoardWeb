@@ -1,0 +1,17 @@
+{
+    "maps": [
+        { "value": "none.png", "text": "---" },
+        { "value": "Augolia2D.png", "text": "Augolia 2D" },
+        { "value": "Augolia3D.jpg", "text": "Augolia 3D" },
+        { "value": "Anliang 3D Back.png", "text": "Anliang 3D Back" },
+        { "value": "Anliang 3D Front.png", "text": "Anliang 3D Front" },
+        { "value": "Anliang 2d.png", "text": "Anliang 2D" },
+        { "value": "Reginopolis 2D.png", "text": "Reginopolis 2D" },
+        { "value": "Reginopolis 3D.png", "text": "Reginopolis 3D" },
+        { "value": "CC.wepb", "text": "Conqueror's City 2D" },
+        { "value": "CC 3D Front.png", "text": "Conqueror's City 3D" },
+        { "value": "Turul 2D.png", "text": "Turul 2D" },
+        { "value": "Turul 3D .png", "text": "Turul 3D" },
+        { "value": "TW Gate Royal Ramparts.webp", "text": "Conqueror's Gate" }
+    ]
+}
