@@ -5,26 +5,29 @@
     box-sizing: border-box;
 }
 
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
 /* Estilos para el cuerpo del documento */
 body {
-    margin: 0;
+    font-family: 'Roboto', sans-serif;
     background-color: #f0f0f0;
     height: 100vh;
-    font-family: Arial, sans-serif;
+    color: #333; /* Color de texto general */
 }
 
 /* Estilos para el encabezado */
 header {
-    background-color: #333;
+    background: linear-gradient(135deg, #485563, #29323c);
     color: white;
     text-align: center;
-    padding: 10px 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    padding: 15px 0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
+
 h1 {
-    margin: 0;
-    font-size: 2em;
+    font-size: 2.5em; /* Tamaño de fuente para el encabezado */
 }
 
 /* Estilos para el contenedor principal */
@@ -36,15 +39,36 @@ h1 {
     padding: 20px;
 }
 
+#Selector {
+    background-color: white;
+    color: #333;
+    padding: 5px 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#fileSelector {
+    width: 90%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);;
+    cursor: pointer;
+}
+
+select:hover {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+
 /* Estilos para el panel de herramientas */
 .tool-panel {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
     display: flex;
     flex-direction: column;
-    margin-left: 20px;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin-right: 20px;
+    max-width: 20%;
 }
 
 /* Estilos para el lienzo */
@@ -55,48 +79,127 @@ h1 {
 
 #imageCanvas, #Board {
     position: absolute;
-    max-width: 140vh;
+    max-width: 100%;
     top: 0;
     left: 0;
-    border: 1px solid black;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px; /* Bordes redondeados */
+}
+
+#icons {
+    background-color: white;
+    color: #333;
+    padding: 5px 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
 }
 
 /* Estilos para los iconos */
 #icons img {
     cursor: pointer;
     margin: 5px;
-    width: 50px; /* Ajustar según el tamaño deseado */
-    height: 50px; /* Ajustar según el tamaño deseado */
+    width: 50px;
+    height: 50px;
+    border-radius: 4px;
+    transition: transform 0.3s ease;
+}
+
+#icons img:hover {
+    transform: scale(1.1);
 }
 
 /* Estilos para los botones y controles */
-input[type="color"], input[type="file"], button, #fileSelector {
+input[type="color"], input[type="file"], button, select {
     margin: 10px;
     height: 30px;
     vertical-align: middle;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+}
+
+button {
+    border: 1px solid #ccc; /* Añadir borde */
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #367c39;
+}
+
+/* Estilos para los iconos y textos seleccionados */
+.selected {
+    border: 2px solid green;
+}
+
+#Painter input[type="color"] {
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px;
+    transition: border-color 0.3s ease;
+
+    /* Estilos para quitar el aspecto predeterminado en algunos navegadores */
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+#Painter input[type="color"]:hover {
+    border-color: #4CAF50; /* Cambia el color del borde al pasar el ratón */
+}
+
+#Painter input[type="color"]:focus {
+    outline: none;
+    border-color: #367c39; /* Cambia el color del borde al hacer clic */
+}
+
+/* Estilos para el control deslizante */
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 8px;
+    border-radius: 5px;
+    background: #ddd;
+    outline: none;
+    opacity: 0.7;
+    transition: opacity .2s;
 }
 
 button.active {
-    background-color: #4CAF50;
+    background-color: blue; /* Color más oscuro para el estado activo */
     color: white;
+    border-color: #2a5a28; /* Borde de color diferente para el estado activo */
 }
 
-/* Estilos para los iconos seleccionados */
-.icon.selected {
-    border: 5px solid rgb(64, 151, 75); /* Cambia 'blue' por el color que prefieras */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #4CAF50;
+    cursor: pointer;
 }
 
-
-#brushSize {
-    width: 80%;
-    margin: 10px 0;
+/* Estilos para los iconos de texto */
+#text-icons-container {
+    margin-top: 20px;
 }
 
-
-#fileSelector {
-    width: 200px;
-    height: 40px;
-    font-size: 16px;
+.text-icon {
+    display: inline-block;
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #f9f9f9; /* Fondo ligero para los iconos de texto */
 }
 
 /* Estilos para el pie de página */
@@ -108,4 +211,9 @@ footer {
     position: fixed;
     bottom: 0;
     width: 100%;
+}
+
+p {
+    font-size: 12px;
+    color: #666;
 }
