@@ -228,6 +228,8 @@ eraserBtn.addEventListener('click', function() {
 });
 
 document.getElementById('mapUpload').addEventListener('change', function(event) {
+    document.getElementById('initialMessage').style.display = 'none';
+    document.querySelector('.canvas-container').style.display = 'block';
     if (event.target.files && event.target.files[0]) {
         const reader = new FileReader();
 
@@ -308,6 +310,9 @@ function adjustImageSize(imgWidth, imgHeight, maxWidth, maxHeight) {
 
 // Evento de cambio para el selector de archivos
 fileSelector.addEventListener('change', function() {
+    document.getElementById('initialMessage').style.display = 'none';
+    document.querySelector('.canvas-container').style.display = 'block';
+    
     const selectedFile = fileSelector.value;
     currentImageSrc = 'media/maps/' + selectedFile;
     

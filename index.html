@@ -13,6 +13,17 @@
     </header>
 
     <div class="container">
+        <div id="initialMessage" class="initial-message">
+            <h2>Welcome to Digital Board</h2>
+            <hr>
+            <br>
+            <p>You can minimize the menu with the top right corener button.</p>
+            <p><strong>Do not refresh the page</strong> or all you did will be deleted.</p>
+            <p>This is a beta version, you can't save the data by now, but sessions will be included asap.</p>
+            <br>
+            <hr>
+            <h3>Select or upload a map to start. -></h3>
+        </div>
         <div class="tool-panel" id="toolPanel">
             <button id="minimizeButton">-</button>
             <div id="Painter">
@@ -46,12 +57,12 @@
             <div id="text-input-section">
                 <h2>Names:</h2>
                 <div id="text-size">
-                    <label for="textSizeSlider">Tamaño del texto:</label>
+                    <label for="textSizeSlider">Text Size:</label>
                     <input type="range" id="textSizeSlider" min="10" max="40" value="16">
                 </div>
-                <label for="textInput">Ingrese texto:</label>
+                <label for="textInput">Text: (separated by spaces)</label>
                 <input type="text" id="textInput">
-                <button id="submitText">Crear Iconos de Texto</button>
+                <button id="submitText">Create text icons</button>
                 <div id="text-icons-container"></div>
             </div>
         </div>        

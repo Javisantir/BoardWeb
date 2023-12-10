@@ -8,7 +8,7 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #f0f0f0;
+    background-color: rgb(43, 42, 42);
     /* height: 100vh; Esta línea podría estar causando el problema, considera removerla o ajustarla */
     color: #333; 
     /* margin-bottom: 100px; Esto también podría estar contribuyendo al problema, ajústalo según sea necesario */
@@ -236,6 +236,7 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .canvas-container {
+    display: none;
     position: relative;
     flex-grow: 1;
     margin-bottom: 50px;
@@ -260,8 +261,26 @@ footer {
     position: fixed;
     bottom: 0;
     width: 100%;
+} 
+
+.initial-message {
+    font-size: 30px;
+    position: absolute; /* O usa 'relative' según tus necesidades */
+    left: 10px; /* Alinea a la izquierda */
+    top: 50%; /* Centra verticalmente */
+    transform: translateY(-50%); /* Ajuste fino para centrar verticalmente */
+    border-radius: 10px; /* Bordes redondeados */
+    background-color: #f0f0f0; /* Color de fondo */
+    padding: 20px; /* Espaciado interno */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra opcional */
+    max-width: 600px; /* Ancho máximo */
 }
 
+.initial-message h2 {
+    margin-bottom: 10px; /* Espacio entre título y texto */
+    /* Estilos adicionales para el título según sea necesario */
+}
 
-
-
+.initial-message p {
+    font-size: 20px;
+}
