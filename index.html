@@ -17,7 +17,7 @@
             <h2>Welcome to Digital Board</h2>
             <hr>
             <br>
-            <p>You can minimize the menu with the top right corener button.</p>
+            <p>You can minimize the menu with the top right corner button.</p>
             <p><strong>Do not refresh the page</strong> or all you did will be deleted.</p>
             <p>This is a beta version, you can't save the data by now, but sessions will be included asap. Because this page use canvas, everything is working as a painting.</p>
             <hr>
@@ -26,11 +26,15 @@
             <p>Maps</p>
             <p>- You can filter by Map Type.</p>
             <p>- You can upload your own maps.</p>
+            <p> - You can zoom in and out. (not working by now)</p>
             <br>
             <p>Troops</p>
-            <p>- You can filter by Tier (Tier3 equals Tier3/Tier2/Tier1)</p>
-            <p>- You can upload your own icons. You can upload various at the same time</p>
+            <p>- You can filter by Tier.</p>
+            <p>- You can upload your own icons. You can upload various at the same time.</p>
+            <p>- You can change the size of the icons.</p>
             <br>
+            <p>Weapons</p>
+            <p>- You can change the size of the weapons.</p>
             <hr>
             <h3>Select the type of the map or upload a map to start. -></h3>
         </div>
@@ -73,6 +77,14 @@
             <br>
             <div id="TroopsContainer">
                 <h2>Troops:</h2>
+                <label for="tierSelector">Select Tier:</label>
+                <select id="tierSelector">
+                    <option value="all">All</option>
+                    <option value="tier5">Tier 5</option>
+                    <option value="tier4">Tier 4</option>
+                    <option value="tier3">Tier 3</option>
+                </select>
+                <br>
                 <label for="iconSize">Troops size:</label>
                 <input type="range" id="iconSize" min="10" max="100" value="50">
                 <div id="icons"></div>

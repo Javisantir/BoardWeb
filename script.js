@@ -105,27 +105,41 @@ drawingCanvas.addEventListener('click', function(event) {
     }
 });
 
-document.addEventListener("DOMContentLoaded", function () {
+document.getElementById('tierSelector').addEventListener('change', function() {
+    const selectedTier = this.value;
+    loadIcons(selectedTier);
+});
+
+function loadIcons(tier) {
     fetch("json/icons.json")
         .then((response) => response.json())
         .then((data) => {
             const iconsContainer = document.getElementById("icons");
+            iconsContainer.innerHTML = ''; // Limpiar íconos existentes
 
-            data.icons.forEach((icon) => {
+            data.icons
+              .filter(icon => tier === 'all' || icon.tier === tier)
+              .forEach((icon) => {
                 const img = document.createElement("img");
                 img.src = icon.src;
                 img.alt = icon.name;
                 img.className = "icon";
-                img.dataset.icon = icon.src; 
+                img.dataset.icon = icon.src;
                 iconsContainer.appendChild(img);
-            });
+              });
 
             attachIconClickEvents();
         })
         .catch((error) => {
             console.error("Error al cargar el archivo JSON: ", error);
         });
+}
+
+// Llamar a loadIcons inicialmente para cargar todos los íconos
+document.addEventListener("DOMContentLoaded", function () {
+    loadIcons('all');
 });
+
 
 colorPicker.addEventListener('click', function() {
     document.querySelectorAll('.icon.selected, .weapon.selected').forEach(selected => {
