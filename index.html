@@ -6,17 +6,23 @@
     <title>CB Tactics</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
 </head>
 <body>
-    <header>
-        <h1>CB Tactics - UNDER MAINTENANCE EXPECT SOME ERRORS AND BUGS</h1>
+    <header class="animate__animated animate__fadeInDown">
+        <h1><CB Tactics -> CB Tactics</h1>
     </header>
 
     <div class="container">
-        <div id="initialMessage" class="initial-message">
-            <h2>Welcome to CB Tactics</h2>
-            <hr>
+        <div id="initialMessage" class="animate__animated animate__slideInLeft">
+            <h2>Welcome</h2>
             <br>
+            <hr>
+            <p><strong>Disclaimer</strong></p>
+            <p>Currently under maintenance expect some errors.</p>
             <p>You can minimize the menu with the top right corner button.</p>
             <p><strong>Do not refresh the page</strong> or all you did will be deleted.</p>
             <p>This is a beta version, you can't save the data by now, but sessions will be included asap. Because this page use canvas, everything is working as a painting.</p>
@@ -25,19 +31,21 @@
             <p><strong>Features</strong></p>
             <p>Maps</p>
             <p>- You can filter by Map Type in the select box.</p>
-            <p>- You can upload your own maps.</p>
+            <p>- You can upload your own maps with the green button.</p>
             <p> - You can zoom in and out. (not working by now)</p>
             <p>Icons</p>
             <p>- You can filter between units, hero, Artillery and CustomIcons.</p>
             <p>- Youn can upload your own icons.</p>
             <br>
+            <hr>
+            <h3>Select a map type or upload a custom one to start.</h3>
         </div>
-        <div class="tool-panel" id="toolPanel">
+        <div class="animate__animated animate__zoomIn" id="toolPanel">
 
             <button id="minimizeButton">-</button>
 
             <div id="Selector">
-                <div id="MapTypeSelector" style="display: flex; align-items: center;">
+                <div id="MapTypeSelector">
                     <h2>Map:</h2>
                     <select id="categorySelector">
                         <option value="none">-----</option>
@@ -47,7 +55,7 @@
                         <option value="capital">Capital</option>
                         <option value="fortress">Fortress</option>
                     </select>
-                    <button id="fileUploadBtn" style="margin-left: auto; font-size: 10px; color: black;">Upload Map</button>
+                    <button id="fileUploadBtn">Upload Map</button>
                 </div>
                 <div id="MapSelector" style="display: none;">
                     <select id="fileSelector"></select>
@@ -116,10 +124,9 @@
         </div>
     </div>
 
-    <footer>
-        <p>Made by <a href="https://github.com/Javisantir">Javisantir</a>(Discord: JaviSantir#3535)</p>
+    <footer class="animate__animated animate__fadeInUp">
+        <p>Made by <a href="https://github.com/Javisantir" target="_blank">Javisantir</a> (Discord: JaviSantir#3535)</p>
     </footer>
-
     <script src="script.js"></script>
 </body>
 </html>

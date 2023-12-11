@@ -1,10 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+/*GENERAL*/
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
 body {
     font-family: 'Roboto', sans-serif;
@@ -12,14 +14,6 @@ body {
     /* height: 100vh; Esta línea podría estar causando el problema, considera removerla o ajustarla */
     color: #333; 
     /* margin-bottom: 100px; Esto también podría estar contribuyendo al problema, ajústalo según sea necesario */
-}
-
-header {
-    background: linear-gradient(135deg, #485563, #29323c);
-    color: white;
-    text-align: center;
-    padding: 15px 0;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
 h1 {
@@ -31,22 +25,57 @@ p {
     color: #666;
 }
 
+button {
+    border: 1px solid #ccc; /* Añadir borde */
+    background-color: #4CAF50;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/*HEADER*/
+header {
+    background-color: #1a1a1a; /* Mismo color de fondo que el footer */
+    color: #4CAF50;
+    text-align: center;
+    padding: 20px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra sutil para profundidad */
+    font-size: 24px; /* Tamaño de fuente más grande para el título */
+    font-weight: 500; /* Peso de la fuente para el título */
+}
+
+header a {
+    color: #4CAF50; /* Color de enlace que armoniza con el footer */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+header a:hover {
+    color: #f0f0f0; /* Cambio de color al pasar el ratón */
+}
+
+header h1 {
+    margin: 0; /* Asegura que no hay margen extra */
+}
+
+
+/*BODY*/
 .container {
     display: flex;
     justify-content: center;
     align-items: start;
     padding: 20px;
+    margin-bottom: 50px;
 }
 
-
-.tool-panel {
-    position: absolute; 
-    top: 90px; 
+/*ToolPanel*/
+#toolPanel {
+    position: fixed; 
+    top: 20px; 
     right: 20px; 
     width: 22%;
     overflow-y: auto; 
     z-index: 3;
-    background-color: #fff;
+    background-color: #1a1a1a;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
@@ -55,6 +84,7 @@ p {
     margin-right: 20px;
 }
 
+
 #toolPanel.minimized {
     width: 25px; 
     height: 25px; 
@@ -62,6 +92,21 @@ p {
     overflow: hidden; 
 }
 
+/*Minimizer*/
+#minimizeButton {
+    cursor: pointer;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+/*Map*/
+#MapTypeSelector {
+    display: flex; 
+    align-items: center;
+}
+
+/*Painter*/
 #Painter {
     background-color: white;
     color: #333;
@@ -92,6 +137,7 @@ p {
     border-color: #367c39; /* Cambia el color del borde al hacer clic */
 }
 
+/*Icons*/
 #uploadedIcons .uploaded-icon {
     width: 35px;
     height: 35px;
@@ -104,7 +150,6 @@ p {
 #uploadedIcons .uploaded-icon:hover {
     transform: scale(1.1);
 }
-
 
 #Selector {
     background-color: white;
@@ -119,13 +164,7 @@ p {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-#UploadMaps {
-    width: 90%;
-    padding: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); 
-    cursor: pointer;
 
-}
 
 #IconUploader {
     width: 90%;
@@ -188,21 +227,11 @@ input[type="color"], input[type="file"], button, select {
     padding: 5px 10px;
 }
 
-button {
-    border: 1px solid #ccc; /* Añadir borde */
-    background-color: #4CAF50;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
 
-button:hover {
-    background-color: #367c39;
-}
 
 /* Estilos para los iconos y textos seleccionados */
 .selected {
-    border: 2px solid green;
+    border: 3px solid green;
 }
 
 /* Estilos para el control deslizante */
@@ -257,12 +286,7 @@ input[type="range"]::-webkit-slider-thumb {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-#minimizeButton {
-    cursor: pointer;
-    position: absolute;
-    top: 5px;
-    right: 5px;
-}
+
 
 .canvas-container {
     display: none;
@@ -273,6 +297,7 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 #imageCanvas, #Board {
+    max-height: calc(100vh - 50px); /* 50px es el espacio deseado */
     position: absolute;
     max-width: 100%;
     top: 0;
@@ -282,34 +307,66 @@ input[type="range"]::-webkit-slider-thumb {
     border-radius: 10px; /* Bordes redondeados */
 }
 
-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-} 
-
-.initial-message {
-    font-size: 30px;
+#initialMessage {
     position: absolute; /* O usa 'relative' según tus necesidades */
     left: 10px; /* Alinea a la izquierda */
-    top: 50%; /* Centra verticalmente */
-    transform: translateY(-50%); /* Ajuste fino para centrar verticalmente */
+    top: 5%; /* Centra verticalmente */
     border-radius: 10px; /* Bordes redondeados */
-    background-color: #f0f0f0; /* Color de fondo */
-    padding: 20px; /* Espaciado interno */
+    background-color: #1a1a1a; /* Color de fondo */
+
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra opcional */
     max-width: 600px; /* Ancho máximo */
+    height: 100%;
 }
 
-.initial-message h2 {
+#initialMessage h2 {
+    color: rgba(255, 255, 255, 0.685);
     margin-bottom: 10px; /* Espacio entre título y texto */
+    font-size: 50px;
     /* Estilos adicionales para el título según sea necesario */
 }
 
-.initial-message p {
+#initialMessage h3 {
+    color: rgba(255, 255, 255, 0.685);
+    margin-bottom: 10px; /* Espacio entre título y texto */
+    font-size: 30px;
+    /* Estilos adicionales para el título según sea necesario */
+}
+
+#initialMessage p {
+    color: rgba(255, 255, 255, 0.685);
     font-size: 16px;
 }
+
+
+/*FOOTER*/
+footer {
+    background-color: #1a1a1a; /* Color de fondo oscuro para un look elegante */
+    color: #f0f0f0; /* Contraste claro para el texto */
+    text-align: center;
+    padding: 20px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 14px;
+    border-top: 4px solid #4CAF50; /* Una línea delgada para agregar un toque de color */
+}
+
+footer a {
+    color: #4CAF50; /* Color de enlace que se destaca */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #f0f0f0; /* Cambio de color al pasar el ratón */
+}
+
+footer p {
+    margin: 5px 0; /* Espaciado uniforme para el texto */
+}
+
