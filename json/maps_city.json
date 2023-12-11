@@ -1,8 +1,0 @@
-{
-    "maps":
-    [
-        { "value": "none.png", "text": "---" },
-        { "value": "Anadoulou_City.png", "text": "Anadoulou City 3D" },
-        { "value": "Anadoulou City 2D.png", "text": "Anadoulou City 2D" }
-    ]
-}

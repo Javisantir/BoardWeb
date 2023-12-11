@@ -13,13 +13,13 @@ const submitTextBtn = document.getElementById('submitText');
 const textIconsContainer = document.getElementById('text-icons-container');
 const textSizeSlider = document.getElementById('textSizeSlider');
 
-let textSize = 16; // Valor inicial del tamaño del texto
+let textSize = 16;
 let selectedIcon = null;
 let selectedText = null;
 let currentImageSrc = '';
 let painting = false;
 let isErasing = false;
-let iconSize = 50; // Valor inicial para el tamaño del icono
+let iconSize = 50; 
 
 const toolPanel = document.getElementById('toolPanel');
 let isDragging = false;
@@ -47,7 +47,6 @@ document.getElementById('iconUpload').addEventListener('change', function(event)
     }
 });
 
-// Función para dibujar la imagen seleccionada en el canvas
 function drawIconOnCanvas(x, y, iconSrc) {
     const img = new Image();
     img.onload = function() {
@@ -56,7 +55,6 @@ function drawIconOnCanvas(x, y, iconSrc) {
     img.src = iconSrc;
 }
 
-// Añade el evento de click en el canvas
 drawingCanvas.addEventListener('click', function(event) {
     const rect = drawingCanvas.getBoundingClientRect();
     const scaleX = drawingCanvas.width / rect.width;
@@ -68,7 +66,6 @@ drawingCanvas.addEventListener('click', function(event) {
         drawIconOnCanvas(x, y, selectedIcon);
     }
 });
-
 
 document.addEventListener("DOMContentLoaded", function () {
     fetch("json/icons.json")
@@ -119,7 +116,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 });
 
-
 document.addEventListener("DOMContentLoaded", function () {
     fetch("json/weapons.json")
         .then((response) => response.json())
@@ -141,7 +137,6 @@ document.addEventListener("DOMContentLoaded", function () {
             console.error("Error al cargar el archivo JSON: ", error);
         });
 });
-
 
 minimizeButton.addEventListener('click', function() {
     toolPanel.classList.toggle('minimized');
@@ -171,22 +166,18 @@ function attachIconClickEvents() {
 function attachWeaponsClickEvents() {
     document.querySelectorAll('.weapon').forEach(weapon => {
         weapon.addEventListener('click', function() {
-            // Deseleccionar cualquier arma o icono seleccionado previamente
             document.querySelectorAll('.icon.selected, .weapon.selected').forEach(selected => {
                 selected.classList.remove('selected');
             });
 
-            // Si el arma ya estaba seleccionada, la deselecciona
             if (this.classList.contains('selected')) {
                 this.classList.remove('selected');
                 selectedIcon = null;
             } else {
-                // Seleccionar la nueva arma y actualizar el icono seleccionado
                 this.classList.add('selected');
                 let aux = this.getAttribute('data-icon');
                 selectedIcon = aux.toString().replace("/media/icons/", "media/icons/");
 
-                // Restablecer el estado de borrador si está activo
                 if (isErasing) {
                     isErasing = false;
                     drawingCtx.globalCompositeOperation = 'source-over';
@@ -223,7 +214,6 @@ submitTextBtn.addEventListener('click', function() {
     });
 });
 
-
 function startPosition(e) {
     painting = true;
     draw(e);
@@ -254,8 +244,6 @@ drawingCanvas.addEventListener('mousedown', startPosition);
 drawingCanvas.addEventListener('mouseup', finishedPosition);
 drawingCanvas.addEventListener('mousemove', draw);
 
-
-// Funcionalidades de borrador y limpieza
 eraserBtn.addEventListener('click', function() {
     isErasing = !isErasing;
     if (isErasing) {
@@ -290,7 +278,6 @@ document.getElementById('mapUpload').addEventListener('change', function(event) 
     }
 });
 
-
 function draw(e) {
     if (!painting) return;
     drawingCtx.lineCap = 'round';
@@ -317,14 +304,12 @@ clearBtn.addEventListener('click', function() {
 });
 
 function adjustImageSize(imgWidth, imgHeight, maxWidth, maxHeight) {
-    // Establecer el tamaño mínimo como la mitad de la ventana
     const minWidth = maxWidth / 2;
     const minHeight = maxHeight / 2;
 
     let newWidth = imgWidth;
     let newHeight = imgHeight;
 
-    // Ajustar el tamaño de la imagen para que sea al menos la mitad de la ventana
     if (newWidth < minWidth) {
         newWidth = minWidth;
         newHeight = minWidth * (imgHeight / imgWidth);
@@ -334,7 +319,6 @@ function adjustImageSize(imgWidth, imgHeight, maxWidth, maxHeight) {
         newWidth = minHeight * (imgWidth / imgHeight);
     }
 
-    // Ajustar el tamaño de la imagen para que no sea mayor que la ventana
     if (newWidth > maxWidth) {
         newWidth = maxWidth;
         newHeight = maxWidth * (imgHeight / imgWidth);
@@ -344,14 +328,12 @@ function adjustImageSize(imgWidth, imgHeight, maxWidth, maxHeight) {
         newWidth = maxHeight * (imgWidth / imgHeight);
     }
 
-    // Ajustar el tamaño del canvas
     imageCanvas.width = newWidth;
     imageCanvas.height = newHeight;
     drawingCanvas.width = newWidth;
     drawingCanvas.height = newHeight;
 }
 
-// Evento de cambio para el selector de archivos
 fileSelector.addEventListener('change', function() {
     document.getElementById('initialMessage').style.display = 'none';
     document.querySelector('.canvas-container').style.display = 'block';
@@ -377,7 +359,6 @@ textSizeSlider.addEventListener('input', function() {
     textSize = this.value;
 });
 
-// Funcionalidad para dibujar texto e iconos en el lienzo
 drawingCanvas.addEventListener('click', function(event) {
     const rect = drawingCanvas.getBoundingClientRect();
     const scaleX = drawingCanvas.width / rect.width;
@@ -396,11 +377,9 @@ drawingCanvas.addEventListener('click', function(event) {
         const textWidth = drawingCtx.measureText(selectedText).width;
         const textHeight = parseInt(textSize, 10) * 1.2;
 
-        // Dibujar un rectángulo blanco detrás del texto
         drawingCtx.fillStyle = 'white';
         drawingCtx.fillRect(x - 5, y - parseInt(textSize, 10), textWidth + 10, textHeight);
 
-        // Dibujar el texto
         drawingCtx.fillStyle = 'black';
         drawingCtx.fillText(selectedText, x, y);
     }
