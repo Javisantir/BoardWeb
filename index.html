@@ -37,7 +37,7 @@
             <div id="Painter">
                 <input type="color" id="colorPicker">
                 <button id="EraserBtn">Eraser</button>
-                <button id="clearBtn">Clean</button>
+                <button id="clearBtn">Clean ALL</button>
                 <div id="Size">
                     <label for="brushSize" class="interactive">Brush/Eraser Size:</label>
                     <input type="range" id="brushSize" min="1" max="25" value="10">
@@ -62,14 +62,16 @@
                 </div>
                 <br>
                 <div id="UploadMaps">
+                    <label for="mapUpload">Upload Custom Map:</label>
                     <input type="file" id="mapUpload" style="display: none;" accept="image/*">
-                    <button id="fileUploadBtn">Upload Custom Map</button>
+                    <button id="fileUploadBtn">Upload Map</button>
                 </div>
                 <br>
             </div>
             <br>
             <div id="TroopsContainer">
                 <h2>Icons:</h2>
+                <label for="tierSelector">Select Icon:</label>
                 <select id="tierSelector">
                     <option value="all">All troops</option>
                     <option value="tier5">Tier 5 troops</option>
@@ -85,8 +87,9 @@
                 <div id="icons"></div>
                 <br>
                 <div id="UploadMaps">
+                    <label for="mapUpload">Upload Custom Icons:</label>
                     <input type="file" id="iconUpload" style="display: none;" multiple>
-                    <button id="IconUploadButton">Upload Custom Icons</button>
+                    <button id="IconUploadButton">Upload Icons:</button>
                     <div id="uploadedIcons"></div>
                 </div>
                 <br>                
