@@ -117,6 +117,24 @@ p {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+#categorySelector {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#UploadMaps {
+    width: 90%;
+    padding: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); 
+    cursor: pointer;
+
+}
+
+#IconUploader {
+    width: 90%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); 
+    cursor: pointer;
+}
+
 #fileSelector {
     width: 90%;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);;

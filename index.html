@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Board</title>
+    <title>CB Tactics</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>Digital Board - UNDER MAINTENANCE EXPECT SOME ERRORS AND BUGS</h1>
+        <h1>CB Tactics - UNDER MAINTENANCE EXPECT SOME ERRORS AND BUGS</h1>
     </header>
 
     <div class="container">
@@ -19,10 +19,20 @@
             <br>
             <p>You can minimize the menu with the top right corener button.</p>
             <p><strong>Do not refresh the page</strong> or all you did will be deleted.</p>
-            <p>This is a beta version, you can't save the data by now, but sessions will be included asap.</p>
+            <p>This is a beta version, you can't save the data by now, but sessions will be included asap. Because this page use canvas, everything is working as a painting.</p>
+            <hr>
+            <br>
+            <p><strong>Features</strong></p>
+            <p>Maps</p>
+            <p>- You can filter by Map Type.</p>
+            <p>- You can upload your own maps.</p>
+            <br>
+            <p>Troops</p>
+            <p>- You can filter by Tier (Tier3 equals Tier3/Tier2/Tier1)</p>
+            <p>- You can upload your own icons. You can upload various at the same time</p>
             <br>
             <hr>
-            <h3>Select or upload a map to start. -></h3>
+            <h3>Select the type of the map or upload a map to start. -></h3>
         </div>
         <div class="tool-panel" id="toolPanel">
             <button id="minimizeButton">-</button>
@@ -37,22 +47,28 @@
             </div>
             <br>
             <div id="Selector">
-                <h2>Map Type:</h2>
-                <select id="categorySelector">
-                    <option value="none">-----</option>
-                    <option value="village">Village</option>
-                    <option value="city">City</option>
-                    <option value="capital">Capital</option>
-                    <option value="fortress">Fortress</option>
-                </select>
+                <div id="MapTypeSelector">
+                    <h2>Map Type:</h2>
+                    <select id="categorySelector">
+                        <option value="none">-----</option>
+                        <option value="WorldMap">WorldMap</option>
+                        <option value="village">Village</option>
+                        <option value="city">City</option>
+                        <option value="capital">Capital</option>
+                        <option value="fortress">Fortress</option>
+                    </select>
+                </div>
                 <div id="MapSelector" style="display: none;">
                     <h2>Maps:</h2>
                     <select id="fileSelector"></select>
                 </div>
-
                 <br>
-                <label for="mapUpload">Upload Custom Map:</label>
-                <input type="file" id="mapUpload" accept="image/*">
+                <div id="UploadMaps">
+                    <label for="mapUpload">Upload Custom Map:</label>
+                    <input type="file" id="mapUpload" style="display: none;" accept="image/*">
+                    <button id="fileUploadBtn">Upload Map</button>
+                </div>
+                <br>
             </div>
             <br>
             <div id="TroopsContainer">
@@ -61,11 +77,13 @@
                 <input type="range" id="iconSize" min="10" max="100" value="50">
                 <div id="icons"></div>
                 <br>
-                <div id="IconUploader">
-                    <label for="iconUpload">Upload Troop:</label>
-                    <input type="file" id="iconUpload" accept="image/*">
+                <div id="UploadMaps">
+                    <label for="mapUpload">Upload Custom Icons:</label>
+                    <input type="file" id="iconUpload" style="display: none;" multiple>
+                    <button id="IconUploadButton">Upload Icons:</button>
+                    <div id="uploadedIcons"></div>
                 </div>
-                <div id="uploadedIcons"></div>
+                <br>                
             </div>
             <br>
             <h2>Weapons:</h2>

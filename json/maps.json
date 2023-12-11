@@ -4,8 +4,34 @@
         { "category": "city", "value": "none.png", "text": "None" },
         { "category": "capital", "value": "none.png", "text": "None" },
         { "category": "fortress", "value": "none.png", "text": "None" },
-        { "category": "village", "value": "Tw Village 1.webp", "text": "TW Village 1" },
-        { "category": "village", "value": "village1.png", "text": "Village 1" },
-        { "category": "city", "value": "Anadoulou City 2D.png", "text": "City 1" }
+
+        { "category": "village", "value": "TW Village 1.webp", "text": "TW Village 1" },
+        { "category": "village", "value": "TW Village Westwood.webp", "text": "TW Village Westwood" },
+        
+        { "category": "city", "value": "Anadoulou City 2D.png", "text": "Anadoulou City 2D" },
+        { "category": "city", "value": "Anadoulou City 3D.png", "text": "Anadoulou City 3D" },
+        { "category": "city", "value": "White elk fort 2d.png", "text": "White Elk Fort 2D" },
+
+        { "category": "capital", "value": "Anliang 2d.png", "text": "Anliang 2D" },
+        { "category": "capital", "value": "Anliang 3D Back.png", "text": "Anliang 3D Back" },
+        { "category": "capital", "value": "Anliang 3D Front.png", "text": "Anliang 3D Front" },
+        { "category": "capital", "value": "Augolia2D.png", "text": "Augolia 2D" },
+        { "category": "capital", "value": "Augolia3D.jpg", "text": "Augolia 3D" },
+        { "category": "capital", "value": "CC.webp", "text": "Conqueror's City" },
+        { "category": "capital", "value": "CC 3D Front.png", "text": "Conqueror's City 3D Front" },
+        { "category": "capital", "value": "Conquerors Gate 3D.png", "text": "Conquerors Gate 3D" },
+        { "category": "capital", "value": "TW Gate Roya Ramparts.webp", "text": "Conquerors Gate 2D" },
+        { "category": "capital", "value": "Reginopolis 2D.png", "text": "Reginopolis 2D" },
+        { "category": "capital", "value": "Reginopolis 3D.png", "text": "Reginopolis 3D" },
+        { "category": "capital", "value": "Turul 2D.png", "text": "Turul 2D" },
+        { "category": "capital", "value": "Turul 3D.png", "text": "Turl 3D" },
+
+        { "category": "WorldMap", "value": "NorthBorderlands.png", "text": "North Borderlands" },
+        { "category": "WorldMap", "value": "SouthBorderlands.png", "text": "South Borderlands" },
+        { "category": "WorldMap", "value": "OSTARIA.png", "text": "Ostaria" },
+        { "category": "WorldMap", "value": "Ungverija.png", "text": "Ungverija" },
+
+        { "category": "fortress", "value": "Anadoulou Fortress 3d BACK.png", "text": "Anadoulou Fortress 3D Back" },
+        { "category": "fortress", "value": "Anadoulou Fortress 3D Front.png", "text": "Anadoulou Fortress 3D Front" }
     ]
 }

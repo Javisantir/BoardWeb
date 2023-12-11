@@ -28,24 +28,29 @@ let dragStartX, dragStartY;
 const minimizeButton = document.getElementById('minimizeButton');
 
 document.getElementById('iconUpload').addEventListener('change', function(event) {
-    if (event.target.files && event.target.files[0]) {
-        const reader = new FileReader();
+    const files = event.target.files;
+    if (files) {
+        const uploadedIconContainer = document.getElementById('uploadedIcons');
 
-        reader.onload = function(e) {
-            const uploadedIconContainer = document.getElementById('uploadedIcons');
-            const img = document.createElement("img");
-            img.src = e.target.result;
-            img.className = "uploaded-icon";
-            uploadedIconContainer.appendChild(img);
+        Array.from(files).forEach(file => {
+            const reader = new FileReader();
 
-            img.addEventListener('click', function() {
-                selectedIcon = e.target.result; 
-            });
-        };
+            reader.onload = function(e) {
+                const img = document.createElement("img");
+                img.src = e.target.result;
+                img.className = "uploaded-icon";
+                uploadedIconContainer.appendChild(img);
 
-        reader.readAsDataURL(event.target.files[0]);
+                img.addEventListener('click', function() {
+                    selectedIcon = e.target.result;
+                });
+            };
+
+            reader.readAsDataURL(file);
+        });
     }
 });
+
 
 function drawIconOnCanvas(x, y, iconSrc) {
     const img = new Image();
@@ -398,4 +403,15 @@ drawingCanvas.addEventListener('click', function(event) {
         drawingCtx.fillStyle = 'black';
         drawingCtx.fillText(selectedText, x, y);
     }
+});
+
+
+
+
+document.getElementById('fileUploadBtn').addEventListener('click', function() {
+    document.getElementById('mapUpload').click();
+});
+
+document.getElementById('IconUploadButton').addEventListener('click', function() {
+    document.getElementById('iconUpload').click();
 });
