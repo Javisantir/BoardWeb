@@ -37,8 +37,19 @@
             </div>
             <br>
             <div id="Selector">
-                <h2>Maps:</h2>
-                <select id="fileSelector"></select>
+                <h2>Map Type:</h2>
+                <select id="categorySelector">
+                    <option value="none">-----</option>
+                    <option value="village">Village</option>
+                    <option value="city">City</option>
+                    <option value="capital">Capital</option>
+                    <option value="fortress">Fortress</option>
+                </select>
+                <div id="MapSelector" style="display: none;">
+                    <h2>Maps:</h2>
+                    <select id="fileSelector"></select>
+                </div>
+
                 <br>
                 <label for="mapUpload">Upload Custom Map:</label>
                 <input type="file" id="mapUpload" accept="image/*">

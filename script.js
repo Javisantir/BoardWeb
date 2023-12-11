@@ -55,6 +55,39 @@ function drawIconOnCanvas(x, y, iconSrc) {
     img.src = iconSrc;
 }
 
+document.getElementById('categorySelector').addEventListener('change', function() {
+    const selectedCategory = this.value;
+    const mapSelector = document.getElementById('MapSelector');
+    mapSelector.style.display = "block";
+    if(selectedCategory === 'none')
+    {
+        mapSelector.style.display = "none";
+        return;
+    }
+
+    loadMaps(selectedCategory);
+});
+
+function loadMaps(category) {
+    fetch('json/maps.json')
+        .then(response => response.json())
+        .then(data => {
+            const fileSelector = document.getElementById('fileSelector');
+            fileSelector.innerHTML = ''; 
+
+            data.maps.filter(map => map.category === category).forEach(map => {
+                const option = document.createElement('option');
+                option.value = map.value;
+                option.textContent = map.text;
+                fileSelector.appendChild(option);
+            });
+        })
+        .catch(error => {
+            console.error('Error al cargar el archivo JSON:', error);
+        });
+}
+
+
 drawingCanvas.addEventListener('click', function(event) {
     const rect = drawingCanvas.getBoundingClientRect();
     const scaleX = drawingCanvas.width / rect.width;
@@ -96,24 +129,6 @@ colorPicker.addEventListener('click', function() {
 
     selectedIcon = null;
     selectedText = null;
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-    fetch('json/maps.json')
-        .then(response => response.json())
-        .then(data => {
-            const fileSelector = document.getElementById('fileSelector');
-
-            data.maps.forEach(map => {
-                const option = document.createElement('option');
-                option.value = map.value;
-                option.textContent = map.text;
-                fileSelector.appendChild(option);
-            });
-        })
-        .catch(error => {
-            console.error('Error al cargar el archivo JSON:', error);
-        });
 });
 
 document.addEventListener("DOMContentLoaded", function () {

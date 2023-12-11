@@ -1,20 +1,11 @@
 {
     "maps": [
-        { "value": "none.png", "text": "" },
-        { "value": "none.png", "text": "---WorldMaps---" },
-        { "value": "OSTARIA.png", "text": "OSTARIA" },
-        { "value": "SouthBorderlands.png", "text": "SouthBorderlands" },
-        { "value": "NorthBorderlands.png", "text": "NorthBorderlands" },
-        { "value": "Ungverija.png", "text": "Ungverija" },
-        { "value": "none.png", "text": "---Cities---" },
-        { "value": "Augolia2D.png", "text": "Augolia 2D" },
-        { "value": "Augolia3D.jpg", "text": "Augolia 3D" },
-        { "value": "Reginopolis 2D.png", "text": "Reginopolis 2D" },
-        { "value": "Reginopolis 3D.png", "text": "Reginopolis 3D" },
-        { "value": "Anadoulou_City.png", "text": "Anadoulou City 3D" },
-        { "value": "Anadoulou City 2D.png", "text": "Anadoulou City 2D" },
-        { "value": "none.png", "text": "---Fortress---" },
-        { "value": "Anadoulou Fortress 3d BACK.png", "text": "Anadoulou Fortress 3D Back" },
-        { "value": "Anadoulou Fortress 3D FRONT.png", "text": "Anadoulou Fortress 3D Front" }
+        { "category": "village", "value": "none.png", "text": "None" },
+        { "category": "city", "value": "none.png", "text": "None" },
+        { "category": "capital", "value": "none.png", "text": "None" },
+        { "category": "fortress", "value": "none.png", "text": "None" },
+        { "category": "village", "value": "Tw Village 1.webp", "text": "TW Village 1" },
+        { "category": "village", "value": "village1.png", "text": "Village 1" },
+        { "category": "city", "value": "Anadoulou City 2D.png", "text": "City 1" }
     ]
 }
