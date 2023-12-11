@@ -27,6 +27,56 @@ let dragStartX, dragStartY;
 
 const minimizeButton = document.getElementById('minimizeButton');
 
+let brushActive = true; // Variable de estado para el pincel
+
+//BRUSH
+function toggleBrush(active) {
+    brushActive = active;   
+    if (brushActive) {
+        // Activar el pincel
+        drawingCanvas.style.cursor = 'crosshair'; // Ejemplo de cambio visual
+    } else {
+        // Desactivar el pincel
+        drawingCanvas.style.cursor = 'default'; // Ejemplo de cambio visual
+    }
+}
+
+colorPicker.addEventListener('click', function() {
+    if (isErasing) {
+        toggleEraser(false);
+    }
+    document.querySelectorAll('.icon.selected, .weapon.selected').forEach(selected => {
+        selected.classList.remove('selected');
+    });
+
+    selectedIcon = null;
+    selectedText = null;
+});
+
+//ERASER
+function toggleEraser(active) {
+    isErasing = active;
+    if (isErasing) {
+        // Activar el borrador
+        eraserBtn.classList.add('active');
+        drawingCtx.globalCompositeOperation = 'destination-out';
+    } else {
+        // Desactivar el borrador
+        eraserBtn.classList.remove('active');
+        drawingCtx.globalCompositeOperation = 'source-over';
+    }
+}
+
+eraserBtn.addEventListener('click', function() {
+    toggleEraser(!isErasing);
+    if (selectedIcon) {
+        selectedIcon = null;
+        document.querySelectorAll('.icon.selected').forEach(i => i.classList.remove('selected'));
+ }
+});
+
+
+//ICONS
 document.getElementById('iconUpload').addEventListener('change', function(event) {
     const files = event.target.files;
     if (files) {
@@ -60,6 +110,8 @@ function drawIconOnCanvas(x, y, iconSrc) {
     img.src = iconSrc;
 }
 
+
+//MAPS
 document.getElementById('categorySelector').addEventListener('change', function() {
     const selectedCategory = this.value;
     const mapSelector = document.getElementById('MapSelector');
@@ -161,8 +213,12 @@ function attachIconClickEvents() {
                 this.classList.remove('selected');
             } else {
                 selectedIcon = this.getAttribute('data-icon');
-                console.log(selectedIcon);
                 this.classList.add('selected');
+            }
+
+            // Desactivar el borrador si está activo
+            if (isErasing) {
+                toggleEraser(false); // Función para desactivar el borrador
             }
         });
     });
@@ -192,14 +248,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-colorPicker.addEventListener('click', function() {
-    document.querySelectorAll('.icon.selected, .weapon.selected').forEach(selected => {
-        selected.classList.remove('selected');
-    });
 
-    selectedIcon = null;
-    selectedText = null;
-});
 
 minimizeButton.addEventListener('click', function() {
     toolPanel.classList.toggle('minimized');
@@ -261,19 +310,7 @@ drawingCanvas.addEventListener('mousedown', startPosition);
 drawingCanvas.addEventListener('mouseup', finishedPosition);
 drawingCanvas.addEventListener('mousemove', draw);
 
-eraserBtn.addEventListener('click', function() {
-    isErasing = !isErasing;
-    if (isErasing) {
-        drawingCtx.globalCompositeOperation = 'destination-out';
-        eraserBtn.classList.add('active');
-        colorPicker.classList.add('inactive'); // Añadir clase al input de color
-    } else {
-        drawingCtx.globalCompositeOperation = 'source-over';
-        drawingCtx.strokeStyle = colorPicker.value;
-        eraserBtn.classList.remove('active');
-        colorPicker.classList.remove('inactive'); // Quitar clase del input de color
-    }
-});
+
 
 document.getElementById('mapUpload').addEventListener('change', function(event) {
     document.getElementById('initialMessage').style.display = 'none';
@@ -296,7 +333,7 @@ document.getElementById('mapUpload').addEventListener('change', function(event) 
 });
 
 function draw(e) {
-    if (!painting) return;
+    if (!painting || !brushActive) return; 
     drawingCtx.lineCap = 'round';
     drawingCtx.lineWidth = brushSizeSlider.value;
     drawingCtx.strokeStyle = colorPicker.value;
