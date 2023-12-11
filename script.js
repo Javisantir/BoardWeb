@@ -105,28 +105,45 @@ drawingCanvas.addEventListener('click', function(event) {
     }
 });
 
-document.getElementById('tierSelector').addEventListener('change', function() {
-    const selectedTier = this.value;
-    loadIcons(selectedTier);
-});
+function loadIcons(selection) {
+    let jsonFile = '';
+    let containerId = 'icons'; // ID del contenedor donde se mostrarán los íconos
 
-function loadIcons(tier) {
-    fetch("json/icons.json")
+    switch (selection) {
+        case 'weapons':
+            jsonFile = 'json/weapons.json';
+            break;
+        case 'artillery':
+            jsonFile = 'json/artillery.json';
+            break;
+        case 'customicons':
+            jsonFile = 'json/customicons.json';
+            break;
+        default:
+            jsonFile = 'json/icons.json';
+    }
+
+    fetch(jsonFile)
         .then((response) => response.json())
         .then((data) => {
-            const iconsContainer = document.getElementById("icons");
-            iconsContainer.innerHTML = ''; // Limpiar íconos existentes
+            const container = document.getElementById(containerId);
+            container.innerHTML = ''; // Limpiar íconos existentes
 
-            data.icons
-              .filter(icon => tier === 'all' || icon.tier === tier)
-              .forEach((icon) => {
+            let items = [];
+            if (selection === 'weapons' || selection === 'artillery' || selection === 'customicons') {
+                items = data[selection];
+            } else {
+                items = data.icons.filter(icon => selection === 'all' || icon.tier === selection);
+            }
+
+            items.forEach((item) => {
                 const img = document.createElement("img");
-                img.src = icon.src;
-                img.alt = icon.name;
-                img.className = "icon";
-                img.dataset.icon = icon.src;
-                iconsContainer.appendChild(img);
-              });
+                img.src = item.src;
+                img.alt = item.name;
+                img.className = 'icon';
+                img.dataset.icon = item.src; 
+                container.appendChild(img);
+            });
 
             attachIconClickEvents();
         })
@@ -135,10 +152,44 @@ function loadIcons(tier) {
         });
 }
 
-// Llamar a loadIcons inicialmente para cargar todos los íconos
+function attachIconClickEvents() {
+    document.querySelectorAll('.icon').forEach(icon => {
+        icon.addEventListener('click', function() {
+            document.querySelectorAll('.icon.selected').forEach(i => i.classList.remove('selected'));
+            if (selectedIcon === this.getAttribute('data-icon')) {
+                selectedIcon = null;
+                this.classList.remove('selected');
+            } else {
+                selectedIcon = this.getAttribute('data-icon');
+                console.log(selectedIcon);
+                this.classList.add('selected');
+            }
+        });
+    });
+}
+
+// Asignar tamaño de íconos
+document.getElementById('iconSize').addEventListener('input', function() {
+    document.querySelectorAll('.icon').forEach(icon => {
+        icon.style.width = this.value + 'px';
+        icon.style.height = this.value + 'px';
+    });
+});
+
+// Event listener para el selector de categorías
+document.getElementById('tierSelector').addEventListener('change', function() {
+    loadIcons(this.value);
+});
+
+
 document.addEventListener("DOMContentLoaded", function () {
     loadIcons('all');
 });
+
+
+
+
+
 
 
 colorPicker.addEventListener('click', function() {
@@ -150,28 +201,6 @@ colorPicker.addEventListener('click', function() {
     selectedText = null;
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-    fetch("json/weapons.json")
-        .then((response) => response.json())
-        .then((data) => {
-            const weaponsContainer = document.getElementById("weapons");
-
-            data.weapons.forEach((weapon) => {
-                const img = document.createElement("img");
-                img.src = weapon.src;
-                img.alt = weapon.name;
-                img.className = "weapon";
-                img.dataset.icon = weapon.src; 
-                weaponsContainer.appendChild(img);
-            });
-
-            attachWeaponsClickEvents();
-        })
-        .catch((error) => {
-            console.error("Error al cargar el archivo JSON: ", error);
-        });
-});
-
 minimizeButton.addEventListener('click', function() {
     toolPanel.classList.toggle('minimized');
 });
@@ -179,52 +208,6 @@ minimizeButton.addEventListener('click', function() {
 iconSizeSlider.addEventListener('input', function() {
     iconSize = this.value;
 });
-
-function attachIconClickEvents() {
-    document.querySelectorAll('.icon').forEach(icon => {
-        icon.addEventListener('click', function() {
-            if (this.classList.contains('selected')) {
-                this.classList.remove('selected');
-                selectedIcon = null;
-            } else {
-                document.querySelectorAll('.icon').forEach(i => i.classList.remove('selected'));
-                let aux = this.getAttribute('data-icon');
-                selectedIcon = aux.toString().replace("/media/icons/", "media/icons/");
-                console.log(selectedIcon);
-                this.classList.add('selected');
-            }
-        });
-    });
-}
-
-function attachWeaponsClickEvents() {
-    document.querySelectorAll('.weapon').forEach(weapon => {
-        weapon.addEventListener('click', function() {
-            document.querySelectorAll('.icon.selected, .weapon.selected').forEach(selected => {
-                selected.classList.remove('selected');
-            });
-
-            if (this.classList.contains('selected')) {
-                this.classList.remove('selected');
-                selectedIcon = null;
-            } else {
-                this.classList.add('selected');
-                let aux = this.getAttribute('data-icon');
-                selectedIcon = aux.toString().replace("/media/icons/", "media/icons/");
-
-                if (isErasing) {
-                    isErasing = false;
-                    drawingCtx.globalCompositeOperation = 'source-over';
-                    drawingCtx.strokeStyle = colorPicker.value;
-                    eraserBtn.classList.remove('active');
-                    colorPicker.classList.remove('inactive');
-                }
-            }
-
-            console.log(selectedIcon);
-        });
-    });
-}
 
 
 submitTextBtn.addEventListener('click', function() {

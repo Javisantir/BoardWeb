@@ -76,16 +76,19 @@
             </div>
             <br>
             <div id="TroopsContainer">
-                <h2>Troops:</h2>
-                <label for="tierSelector">Select Tier:</label>
+                <h2>Icons:</h2>
+                <label for="tierSelector">Select Icon:</label>
                 <select id="tierSelector">
-                    <option value="all">All</option>
-                    <option value="tier5">Tier 5</option>
-                    <option value="tier4">Tier 4</option>
-                    <option value="tier3">Tier 3</option>
+                    <option value="all">All troops</option>
+                    <option value="tier5">Tier 5 troops</option>
+                    <option value="tier4">Tier 4 troops</option>
+                    <option value="tier3">Tier 3 troops</option>
+                    <option value="weapons">Hero</option>
+                    <option value="artillery">Artillery</option>
+                    <option value="customicons">Icons</option>
                 </select>
                 <br>
-                <label for="iconSize">Troops size:</label>
+                <label for="iconSize">Icons size:</label>
                 <input type="range" id="iconSize" min="10" max="100" value="50">
                 <div id="icons"></div>
                 <br>
@@ -97,11 +100,6 @@
                 </div>
                 <br>                
             </div>
-            <br>
-            <h2>Weapons:</h2>
-            <label for="weaponSize">Weapons size:</label>
-            <input type="range" id="weaponSize" min="10" max="100" value="50">
-            <div id="weapons"></div>
             <br>
             <div id="text-input-section">
                 <h2>Names:</h2>

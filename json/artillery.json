@@ -1,0 +1,54 @@
+{
+    "artillery":
+    [
+        {
+            "name": "Bird",
+            "src": "media/icons/artillery/Bird.png"
+        },
+        {
+            "name": "BM",
+            "src": "media/icons/artillery/BlueMortar.png"
+        },
+        {
+            "name": "PM",
+            "src": "media/icons/artillery/PurpleMortar.png"
+        },
+        {
+            "name": "Bombard",
+            "src": "media/icons/artillery/Bombard.png"
+        },
+        {
+            "name": "Cannon",
+            "src": "media/icons/artillery/Cannon.png"
+        },
+        {
+            "name": "GrapeShot",
+            "src": "media/icons/artillery/GrapeShot.png"
+        },
+        {
+            "name": "Hwacha",
+            "src": "media/icons/artillery/Hwacha.png"
+        },
+        {
+            "name": "Culverin",
+            "src": "media/icons/artillery/Culverin.png"
+        },
+        {
+            "name": "Rocket",
+            "src": "media/icons/artillery/Rocket.png"
+        },
+        {
+            "name": "SiegeBallist",
+            "src": "media/icons/artillery/SiegeBallist.png"
+        },
+        {
+            "name": "Trebuchet",
+            "src": "media/icons/artillery/Trebuchet.png"
+        },
+        {
+            "name": "Catapult",
+            "src": "media/icons/artillery/Catapult.png"
+        }
+    ]
+
+}
