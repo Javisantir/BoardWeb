@@ -4,6 +4,7 @@
         { "category": "city", "value": "none.png", "text": "None" },
         { "category": "capital", "value": "none.png", "text": "None" },
         { "category": "fortress", "value": "none.png", "text": "None" },
+        { "category": "WorldMap", "value": "none.png", "text": "None" },
 
         { "category": "village", "value": "TW Village 1.webp", "text": "TW Village 1" },
         { "category": "village", "value": "TW Village Westwood.webp", "text": "TW Village Westwood" },

@@ -14,7 +14,7 @@
 
     <div class="container">
         <div id="initialMessage" class="initial-message">
-            <h2>Welcome to Digital Board</h2>
+            <h2>Welcome to CB Tactics</h2>
             <hr>
             <br>
             <p>You can minimize the menu with the top right corner button.</p>
@@ -24,7 +24,7 @@
             <br>
             <p><strong>Features</strong></p>
             <p>Maps</p>
-            <p>- You can filter by Map Type.</p>
+            <p>- You can filter by Map Type in the select box.</p>
             <p>- You can upload your own maps.</p>
             <p> - You can zoom in and out. (not working by now)</p>
             <p>Icons</p>
@@ -33,20 +33,12 @@
             <br>
         </div>
         <div class="tool-panel" id="toolPanel">
+
             <button id="minimizeButton">-</button>
-            <div id="Painter">
-                <input type="color" id="colorPicker">
-                <button id="EraserBtn">Eraser</button>
-                <button id="clearBtn">Clean ALL</button>
-                <div id="Size">
-                    <label for="brushSize" class="interactive">Brush/Eraser Size:</label>
-                    <input type="range" id="brushSize" min="1" max="25" value="10">
-                </div>
-            </div>
-            <br>
+
             <div id="Selector">
-                <div id="MapTypeSelector">
-                    <h2>Map Type:</h2>
+                <div id="MapTypeSelector" style="display: flex; align-items: center;">
+                    <h2>Map:</h2>
                     <select id="categorySelector">
                         <option value="none">-----</option>
                         <option value="WorldMap">WorldMap</option>
@@ -55,45 +47,56 @@
                         <option value="capital">Capital</option>
                         <option value="fortress">Fortress</option>
                     </select>
+                    <button id="fileUploadBtn" style="margin-left: auto; font-size: 10px; color: black;">Upload Map</button>
                 </div>
                 <div id="MapSelector" style="display: none;">
-                    <h2>Maps:</h2>
                     <select id="fileSelector"></select>
                 </div>
-                <br>
-                <div id="UploadMaps">
-                    <label for="mapUpload">Upload Custom Map:</label>
-                    <input type="file" id="mapUpload" style="display: none;" accept="image/*">
-                    <button id="fileUploadBtn">Upload Map</button>
+                <div id="UploadMaps" style="display: none;">
+                    <input type="file" id="mapUpload" accept="image/*">
                 </div>
-                <br>
-            </div>
+            </div>   
+
+            <br>     
+
+            <div id="Painter">
+                <input type="color" id="colorPicker">
+                <button id="EraserBtn">Eraser</button>
+                <button id="clearBtn">Clean All</button>
+                <div id="Size">
+                    <label for="brushSize" class="interactive">Brush/Eraser Size:</label>
+                    <input type="range" id="brushSize" min="1" max="25" value="10">
+                </div>
+            </div>  
+
             <br>
+
             <div id="TroopsContainer">
-                <h2>Icons:</h2>
-                <label for="tierSelector">Select Icon:</label>
-                <select id="tierSelector">
-                    <option value="all">All troops</option>
-                    <option value="tier5">Tier 5 troops</option>
-                    <option value="tier4">Tier 4 troops</option>
-                    <option value="tier3">Tier 3 troops</option>
-                    <option value="weapons">Hero</option>
-                    <option value="artillery">Artillery</option>
-                    <option value="customicons">Icons</option>
-                </select>
-                <br>
-                <label for="iconSize">Icons size:</label>
-                <input type="range" id="iconSize" min="10" max="100" value="50">
-                <div id="icons"></div>
-                <br>
-                <div id="UploadMaps">
-                    <label for="mapUpload">Upload Custom Icons:</label>
-                    <input type="file" id="iconUpload" style="display: none;" multiple>
-                    <button id="IconUploadButton">Upload Icons:</button>
-                    <div id="uploadedIcons"></div>
+                <div style="display: flex; align-items: center;">
+                    <h2>Icons:</h2>
+                    <select id="tierSelector" style="margin-left: 10px;">
+                        <option value="all">All troops</option>
+                        <option value="tier5">Tier 5 troops</option>
+                        <option value="tier4">Tier 4 troops</option>
+                        <option value="tier3">Tier 3 troops</option>
+                        <option value="weapons">Hero</option>
+                        <option value="artillery">Artillery</option>
+                        <option value="customicons">Icons</option>
+                    </select>
+                    <button id="IconUploadButton" style="margin-left: 10px; font-size: 10px; color: black;">Upload Icons</button>
                 </div>
-                <br>                
+                <div>
+                    <label for="iconSize">Icons size:</label>
+                    <input type="range" id="iconSize" min="10" max="100" value="50">
+                </div>
+                <div id="icons"></div>
+                <input type="file" id="iconUpload" style="display: none;" multiple>
+                <div id="uploadedIcons" style="box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); background-color: grey; border-radius: 15px;"></div>
+                <br>
             </div>
+            
+            
+            
             <br>
             <div id="text-input-section">
                 <h2>Names:</h2>
