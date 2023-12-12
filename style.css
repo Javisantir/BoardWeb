@@ -203,8 +203,8 @@ select:hover {
 #icons img {
     cursor: pointer;
     margin: 5px;
-    width: 35px;
-    height: 35px;
+    width: 45px;
+    height: 45px;
     border-radius: 4px;
     transition: transform 0.3s ease;
 }

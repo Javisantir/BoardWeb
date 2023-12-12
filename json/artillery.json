@@ -48,6 +48,14 @@
         {
             "name": "Catapult",
             "src": "media/icons/artillery/Catapult.png"
+        },
+        {
+            "name": "B",
+            "src": "media/icons/artillery/B.png"
+        },
+        {
+            "name": "S",
+            "src": "media/icons/artillery/S.png"
         }
     ]
 

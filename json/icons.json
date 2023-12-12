@@ -282,6 +282,16 @@
       "src": "media/icons/units/C.png",
       "tier": "tier4"
     },
+    {
+      "name": "H",
+      "src": "media/icons/units/H.png",
+      "tier": "tier4"
+    },
+    {
+      "name": "CPP",
+      "src": "media/icons/units/CPP.png",
+      "tier": "tier4"
+    },
 
     
     {
