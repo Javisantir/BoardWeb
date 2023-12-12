@@ -195,6 +195,7 @@ function deactivateEraser() {
 
 /*Clear*/
 clearBtn.addEventListener('click', function() {
+    history = [];
     drawingCtx.clearRect(0, 0, drawingCanvas.width, drawingCanvas.height);
     saveHistory();
 });
@@ -388,31 +389,101 @@ drawingCanvas.addEventListener('click', function(event) {
 });
 
 
-/*CTR+Z*/
+/*CTR+Z AND SAVE FILE*/
 let history = [];
-const maxHistorySize = 2000; // Límite de la cantidad de pasos que puedes deshacer
+const maxHistorySize = 20000; // Límite de la cantidad de pasos que puedes deshacer
 
 function saveHistory() {
     if (history.length >= maxHistorySize) {
         history.shift(); // Elimina el estado más antiguo si se alcanza el límite
     }
-    history.push(drawingCtx.getImageData(0, 0, drawingCanvas.width, drawingCanvas.height));
+    const imageData = drawingCanvas.toDataURL("image/png"); // Convertir a base64
+    history.push(imageData);
 }
 
 function undo() {
     if (history.length > 0) {
         const lastState = history.pop();
-        drawingCtx.putImageData(lastState, 0, 0);
+        const img = new Image();
+        img.onload = function() {
+            drawingCtx.clearRect(0, 0, drawingCanvas.width, drawingCanvas.height);
+            drawingCtx.drawImage(img, 0, 0);
+        };
+        img.src = lastState; // Cargar la imagen de base64
     }
 }
 
-// Añade un listener para los eventos de teclado
 document.addEventListener('keydown', function(event) {
     if (event.ctrlKey && event.key === 'z') {
         console.log('Undo');
         undo();
     }
 });
+
+function saveHistoryToJson() {
+    return JSON.stringify(history); // Convertir el historial a JSON
+}
+
+document.getElementById('saveHistoryBtn').addEventListener('click', function() {
+    const jsonHistory = saveHistoryToJson(); // Obtener el historial como JSON
+    const blob = new Blob([jsonHistory], {type: "application/json"});
+    const url = URL.createObjectURL(blob);
+
+    // Crear un elemento <a> temporal para realizar la descarga
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "historial_canvas.json"; // Nombre del archivo a descargar
+    document.body.appendChild(a);
+    a.click();
+
+    // Limpiar y remover el elemento <a>
+    window.URL.revokeObjectURL(url);
+    document.body.removeChild(a);
+});
+
+function loadHistoryFromJson(jsonHistory) {
+    const historyArray = JSON.parse(jsonHistory);
+    
+    // Limpia el canvas actual
+    drawingCtx.clearRect(0, 0, drawingCanvas.width, drawingCanvas.height);
+
+    // Aplica cada estado del historial al canvas
+    historyArray.forEach((base64Image, index) => {
+        const img = new Image();
+        img.onload = function() {
+            drawingCtx.drawImage(img, 0, 0);
+
+            // Si es el último elemento del historial, lo dibuja en el canvas actual
+            if (index === historyArray.length - 1) {
+                drawingCtx.drawImage(img, 0, 0);
+            }
+        };
+        img.src = base64Image;
+    });
+}
+
+
+// Activar el input de tipo file cuando se hace clic en el botón
+document.getElementById('loadHistoryBtn').addEventListener('click', function() {
+    document.getElementById('fileInput').click();
+});
+
+// Manejar el archivo seleccionado
+document.getElementById('fileInput').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (!file) {
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const jsonHistory = e.target.result;
+        loadHistoryFromJson(jsonHistory);
+        console.log("Historial cargado y aplicado al canvas.");
+    };
+    reader.readAsText(file);
+});
+
 
 
 
