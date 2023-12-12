@@ -131,10 +131,11 @@ function finishedPosition() {
 }
 
 colorPicker.addEventListener('click', function() {
+    deactivateEraser();
     document.querySelectorAll('.icon.selected, .weapon.selected').forEach(selected => {
         selected.classList.remove('selected');
     });
-
+    isDrawingEnabled = true;
     selectedIcon = null;
     selectedText = null;
 });
@@ -161,6 +162,32 @@ drawingCanvas.addEventListener('mousemove', draw);
 
 
 /*Eraser*/
+eraserBtn.addEventListener('click', function() {
+    if (isErasing) {
+        deactivateEraser();
+    } else {
+        document.querySelectorAll('.icon.selected, .weapon.selected').forEach(selected => {
+            selected.classList.remove('selected');
+        });
+        isDrawingEnabled = true;
+        selectedIcon = null;
+        selectedText = null;
+        activateEraser();
+    }
+});
+
+function activateEraser() {
+    isErasing = true;
+    drawingCtx.globalCompositeOperation = 'destination-out';
+    eraserBtn.classList.add('active');
+}
+
+function deactivateEraser() {
+    isErasing = false;
+    drawingCtx.globalCompositeOperation = 'source-over';
+    eraserBtn.classList.remove('active');
+}
+
 
 /*Clear*/
 clearBtn.addEventListener('click', function() {
@@ -232,6 +259,7 @@ function loadIcons(selection) {
 function attachIconClickEvents() {
     document.querySelectorAll('.icon').forEach(icon => {
         icon.addEventListener('click', function() {
+            deactivateEraser();
             selectIcon(this);
             document.querySelectorAll('.icon.selected').forEach(i => i.classList.remove('selected'));
             if (selectedIcon === this.getAttribute('data-icon')) {
@@ -300,6 +328,7 @@ submitTextBtn.addEventListener('click', function() {
                     document.querySelectorAll('.icon.selected, .text-icon.selected').forEach(selected => {
                         selected.classList.remove('selected');
                     });
+                    deactivateEraser();
                     this.classList.add('selected');
                     selectedIcon = null;
                     selectedText = word;
