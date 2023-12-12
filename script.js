@@ -25,6 +25,8 @@ let iconSize = 50;
 let isDragging = false;
 let dragStartX, dragStartY;
 
+let isDrawingEnabled = true;
+
 
 /*Minimize Button*/
 minimizeButton.addEventListener('click', function() {
@@ -118,6 +120,7 @@ fileSelector.addEventListener('change', function() {
 
 /*Painter*/
 function startPosition(e) {
+    if (!isDrawingEnabled) return;
     painting = true;
     draw(e);
 }
@@ -229,13 +232,15 @@ function loadIcons(selection) {
 function attachIconClickEvents() {
     document.querySelectorAll('.icon').forEach(icon => {
         icon.addEventListener('click', function() {
+            selectIcon(this);
             document.querySelectorAll('.icon.selected').forEach(i => i.classList.remove('selected'));
             if (selectedIcon === this.getAttribute('data-icon')) {
                 selectedIcon = null;
+                isDrawingEnabled = true;
                 this.classList.remove('selected');
             } else {
                 selectedIcon = this.getAttribute('data-icon');
-                console.log(selectedIcon);
+                isDrawingEnabled = false;
                 this.classList.add('selected');
                 icon.style.width = this.value + 'px';
                 icon.style.height = this.value + 'px';
@@ -274,6 +279,7 @@ iconSizeSlider.addEventListener('input', function() {
 
 
 /*Text*/
+// Event Listener para los textos
 submitTextBtn.addEventListener('click', function() {
     const words = textInput.value.split(' ');
     textIconsContainer.innerHTML = '';
@@ -284,16 +290,35 @@ submitTextBtn.addEventListener('click', function() {
             textIcon.classList.add('text-icon');
             textIcon.textContent = word;
             textIcon.addEventListener('click', function() {
-                document.querySelectorAll('.icon, .text-icon').forEach(icon => icon.classList.remove('selected'));
-                selectedIcon = null;
-
-                this.classList.add('selected');
-                selectedText = word;
+                // Deseleccionar si ya está seleccionado
+                if (this.classList.contains('selected')) {
+                    this.classList.remove('selected');
+                    selectedText = null;
+                    isDrawingEnabled = true;
+                } else {
+                    // Deseleccionar otros y seleccionar este
+                    document.querySelectorAll('.icon.selected, .text-icon.selected').forEach(selected => {
+                        selected.classList.remove('selected');
+                    });
+                    this.classList.add('selected');
+                    selectedIcon = null;
+                    selectedText = word;
+                    isDrawingEnabled = false;
+                }
             });
             textIconsContainer.appendChild(textIcon);
         }
     });
 });
+
+function selectIcon(iconElement) {
+    document.querySelectorAll('.icon.selected, .text-icon.selected').forEach(selected => {
+        selected.classList.remove('selected');
+    });
+    iconElement.classList.add('selected');
+    selectedText = null;
+    isDrawingEnabled = false;
+}
 
 /*Text Size*/
 textSizeSlider.addEventListener('input', function() {

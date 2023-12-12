@@ -277,6 +277,14 @@ input[type="range"]::-webkit-slider-thumb {
     background-color: #f9f9f9; /* Fondo ligero para los iconos de texto */
 }
 
+.text-icon.selected {
+    border: 2px solid green; /* Grosor, estilo y color del borde */
+    padding: 2px; /* Espaciado interno para que el texto no esté demasiado apretado */
+    margin: 2px; /* Espacio alrededor del texto para visualizar mejor el borde */
+    display: inline-block; /* Asegúrate de que se aplique el padding y el border */
+}
+
+
 #text-input-section {
     background-color: white;
     color: #333;
