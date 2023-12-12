@@ -122,12 +122,14 @@ fileSelector.addEventListener('change', function() {
 function startPosition(e) {
     if (!isDrawingEnabled) return;
     painting = true;
+    saveHistory();
     draw(e);
 }
 
 function finishedPosition() {
     painting = false;
     drawingCtx.beginPath();
+    saveHistory();
 }
 
 colorPicker.addEventListener('click', function() {
@@ -180,18 +182,21 @@ function activateEraser() {
     isErasing = true;
     drawingCtx.globalCompositeOperation = 'destination-out';
     eraserBtn.classList.add('active');
+    saveHistory();
 }
 
 function deactivateEraser() {
     isErasing = false;
     drawingCtx.globalCompositeOperation = 'source-over';
     eraserBtn.classList.remove('active');
+    saveHistory();
 }
 
 
 /*Clear*/
 clearBtn.addEventListener('click', function() {
     drawingCtx.clearRect(0, 0, drawingCanvas.width, drawingCanvas.height);
+    saveHistory();
 });
 
 /*Bruhs Size*/
@@ -294,6 +299,7 @@ function drawIconOnCanvas(x, y, iconSrc) {
     const img = new Image();
     img.onload = function() {
         drawingCtx.drawImage(img, x - iconSize / 2, y - iconSize / 2, iconSize, iconSize);
+        saveHistory();
     };
     img.src = iconSrc;
 }
@@ -378,6 +384,33 @@ drawingCanvas.addEventListener('click', function(event) {
 
         drawingCtx.fillStyle = 'black';
         drawingCtx.fillText(selectedText, x, y);
+    }
+});
+
+
+/*CTR+Z*/
+let history = [];
+const maxHistorySize = 2000; // Límite de la cantidad de pasos que puedes deshacer
+
+function saveHistory() {
+    if (history.length >= maxHistorySize) {
+        history.shift(); // Elimina el estado más antiguo si se alcanza el límite
+    }
+    history.push(drawingCtx.getImageData(0, 0, drawingCanvas.width, drawingCanvas.height));
+}
+
+function undo() {
+    if (history.length > 0) {
+        const lastState = history.pop();
+        drawingCtx.putImageData(lastState, 0, 0);
+    }
+}
+
+// Añade un listener para los eventos de teclado
+document.addEventListener('keydown', function(event) {
+    if (event.ctrlKey && event.key === 'z') {
+        console.log('Undo');
+        undo();
     }
 });
 
