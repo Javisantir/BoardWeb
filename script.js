@@ -12,6 +12,8 @@ const textInput = document.getElementById('textInput');
 const submitTextBtn = document.getElementById('submitText');
 const textIconsContainer = document.getElementById('text-icons-container');
 const textSizeSlider = document.getElementById('textSizeSlider');
+const minimizeButton = document.getElementById('minimizeButton');
+const toolPanel = document.getElementById('toolPanel');
 
 let textSize = 16;
 let selectedIcon = null;
@@ -20,46 +22,18 @@ let currentImageSrc = '';
 let painting = false;
 let isErasing = false;
 let iconSize = 50; 
-
-const toolPanel = document.getElementById('toolPanel');
 let isDragging = false;
 let dragStartX, dragStartY;
 
-const minimizeButton = document.getElementById('minimizeButton');
 
-document.getElementById('iconUpload').addEventListener('change', function(event) {
-    const files = event.target.files;
-    if (files) {
-        const uploadedIconContainer = document.getElementById('uploadedIcons');
-
-        Array.from(files).forEach(file => {
-            const reader = new FileReader();
-
-            reader.onload = function(e) {
-                const img = document.createElement("img");
-                img.src = e.target.result;
-                img.className = "uploaded-icon";
-                uploadedIconContainer.appendChild(img);
-
-                img.addEventListener('click', function() {
-                    selectedIcon = e.target.result;
-                });
-            };
-
-            reader.readAsDataURL(file);
-        });
-    }
+/*Minimize Button*/
+minimizeButton.addEventListener('click', function() {
+    toolPanel.classList.toggle('minimized');
 });
 
 
-function drawIconOnCanvas(x, y, iconSrc) {
-    const img = new Image();
-    img.onload = function() {
-        drawingCtx.drawImage(img, x - iconSize / 2, y - iconSize / 2, iconSize, iconSize);
-    };
-    img.src = iconSrc;
-}
-
+/*Map*/
+/*Select Category*/
 document.getElementById('categorySelector').addEventListener('change', function() {
     const selectedCategory = this.value;
     const mapSelector = document.getElementById('MapSelector');
@@ -73,6 +47,7 @@ document.getElementById('categorySelector').addEventListener('change', function(
     loadMaps(selectedCategory);
 });
 
+/*Load Maps*/
 function loadMaps(category) {
     fetch('json/maps.json')
         .then(response => response.json())
@@ -92,17 +67,116 @@ function loadMaps(category) {
         });
 }
 
+function adjustImageSize(imgWidth, imgHeight, maxWidth, maxHeight) {
+    const minWidth = maxWidth / 2;
+    const minHeight = maxHeight / 2;
 
-drawingCanvas.addEventListener('click', function(event) {
+    let newWidth = imgWidth;
+    let newHeight = imgHeight;
+
+    if (newWidth < minWidth) {
+        newWidth = minWidth;
+        newHeight = minWidth * (imgHeight / imgWidth);
+    }
+    if (newHeight < minHeight) {
+        newHeight = minHeight;
+        newWidth = minHeight * (imgWidth / imgHeight);
+    }
+
+    if (newWidth > maxWidth) {
+        newWidth = maxWidth;
+        newHeight = maxWidth * (imgHeight / imgWidth);
+    }
+    if (newHeight > maxHeight) {
+        newHeight = maxHeight;
+        newWidth = maxHeight * (imgWidth / imgHeight);
+    }
+
+    imageCanvas.width = newWidth;
+    imageCanvas.height = newHeight;
+    drawingCanvas.width = newWidth;
+    drawingCanvas.height = newHeight;
+}
+
+fileSelector.addEventListener('change', function() {
+    document.getElementById('initialMessage').style.display = 'none';
+    document.querySelector('.canvas-container').style.display = 'block';
+    
+    const selectedFile = fileSelector.value;
+    currentImageSrc = 'media/maps/' + selectedFile;
+    
+    const img = new Image();
+    img.onload = function() {
+        adjustImageSize(img.width, img.height, window.innerWidth, window.innerHeight);
+        imageCtx.drawImage(img, 0, 0, imageCanvas.width, imageCanvas.height);
+    };
+
+    img.src = currentImageSrc;
+});
+
+
+
+/*Painter*/
+function startPosition(e) {
+    painting = true;
+    draw(e);
+}
+
+function finishedPosition() {
+    painting = false;
+    drawingCtx.beginPath();
+}
+
+colorPicker.addEventListener('click', function() {
+    document.querySelectorAll('.icon.selected, .weapon.selected').forEach(selected => {
+        selected.classList.remove('selected');
+    });
+
+    selectedIcon = null;
+    selectedText = null;
+});
+
+function draw(e) {
+    if (!painting) return;
+    drawingCtx.lineCap = 'round';
+    drawingCtx.lineWidth = brushSizeSlider.value;
+    drawingCtx.strokeStyle = colorPicker.value;
     const rect = drawingCanvas.getBoundingClientRect();
     const scaleX = drawingCanvas.width / rect.width;
     const scaleY = drawingCanvas.height / rect.height;
-    const x = (event.clientX - rect.left) * scaleX;
-    const y = (event.clientY - rect.top) * scaleY;
+    const x = (e.clientX - rect.left) * scaleX;
+    const y = (e.clientY - rect.top) * scaleY;
+    drawingCtx.lineTo(x, y);
+    drawingCtx.stroke();
+    drawingCtx.beginPath();
+    drawingCtx.moveTo(x, y);
+}
 
-    if (selectedIcon) {
-        drawIconOnCanvas(x, y, selectedIcon);
-    }
+drawingCanvas.addEventListener('mousedown', startPosition);
+drawingCanvas.addEventListener('mouseup', finishedPosition);
+drawingCanvas.addEventListener('mousemove', draw);
+
+
+/*Eraser*/
+
+/*Clear*/
+clearBtn.addEventListener('click', function() {
+    drawingCtx.clearRect(0, 0, drawingCanvas.width, drawingCanvas.height);
+});
+
+/*Bruhs Size*/
+brushSizeSlider.addEventListener('input', function() {
+    drawingCtx.lineWidth = brushSizeSlider.value;
+});
+
+
+/*Icons*/
+document.addEventListener("DOMContentLoaded", function () {
+    loadIcons('all');
+});
+
+document.getElementById('tierSelector').addEventListener('change', function() {
+    loadIcons(this.value);
 });
 
 function loadIcons(selection) {
@@ -170,34 +244,36 @@ function attachIconClickEvents() {
     });
 }
 
-// Event listener para el selector de categorías
-document.getElementById('tierSelector').addEventListener('change', function() {
-    loadIcons(this.value);
+/*Paint Icon on canvas*/
+drawingCanvas.addEventListener('click', function(event) {
+    const rect = drawingCanvas.getBoundingClientRect();
+    const scaleX = drawingCanvas.width / rect.width;
+    const scaleY = drawingCanvas.height / rect.height;
+    const x = (event.clientX - rect.left) * scaleX;
+    const y = (event.clientY - rect.top) * scaleY;
+
+    if (selectedIcon) {
+        drawIconOnCanvas(x, y, selectedIcon);
+    }
 });
 
+function drawIconOnCanvas(x, y, iconSrc) {
+    const img = new Image();
+    img.onload = function() {
+        drawingCtx.drawImage(img, x - iconSize / 2, y - iconSize / 2, iconSize, iconSize);
+    };
+    img.src = iconSrc;
+}
 
-document.addEventListener("DOMContentLoaded", function () {
-    loadIcons('all');
-});
 
-colorPicker.addEventListener('click', function() {
-    document.querySelectorAll('.icon.selected, .weapon.selected').forEach(selected => {
-        selected.classList.remove('selected');
-    });
-
-    selectedIcon = null;
-    selectedText = null;
-});
-
-minimizeButton.addEventListener('click', function() {
-    toolPanel.classList.toggle('minimized');
-});
-
+/*Icons size*/
 iconSizeSlider.addEventListener('input', function() {
     iconSize = this.value;
 });
 
 
+
+/*Text*/
 submitTextBtn.addEventListener('click', function() {
     const words = textInput.value.split(' ');
     textIconsContainer.innerHTML = '';
@@ -219,151 +295,12 @@ submitTextBtn.addEventListener('click', function() {
     });
 });
 
-function startPosition(e) {
-    painting = true;
-    draw(e);
-}
-
-function finishedPosition() {
-    painting = false;
-    drawingCtx.beginPath();
-}
-
-function draw(e) {
-    if (!painting) return;
-    drawingCtx.lineCap = 'round';
-    drawingCtx.lineWidth = brushSizeSlider.value;
-    drawingCtx.strokeStyle = isErasing ? 'rgba(0,0,0,0)' : colorPicker.value;
-    const rect = drawingCanvas.getBoundingClientRect();
-    const scaleX = drawingCanvas.width / rect.width;
-    const scaleY = drawingCanvas.height / rect.height;
-    const x = (e.clientX - rect.left) * scaleX;
-    const y = (e.clientY - rect.top) * scaleY;
-    drawingCtx.lineTo(x, y);
-    drawingCtx.stroke();
-    drawingCtx.beginPath();
-    drawingCtx.moveTo(x, y);
-}
-
-drawingCanvas.addEventListener('mousedown', startPosition);
-drawingCanvas.addEventListener('mouseup', finishedPosition);
-drawingCanvas.addEventListener('mousemove', draw);
-
-eraserBtn.addEventListener('click', function() {
-    isErasing = !isErasing;
-    if (isErasing) {
-        drawingCtx.globalCompositeOperation = 'destination-out';
-        eraserBtn.classList.add('active');
-        colorPicker.classList.add('inactive'); // Añadir clase al input de color
-    } else {
-        drawingCtx.globalCompositeOperation = 'source-over';
-        drawingCtx.strokeStyle = colorPicker.value;
-        eraserBtn.classList.remove('active');
-        colorPicker.classList.remove('inactive'); // Quitar clase del input de color
-    }
-});
-
-document.getElementById('mapUpload').addEventListener('change', function(event) {
-    document.getElementById('initialMessage').style.display = 'none';
-    document.querySelector('.canvas-container').style.display = 'block';
-    if (event.target.files && event.target.files[0]) {
-        const reader = new FileReader();
-
-        reader.onload = function(e) {
-            const img = new Image();
-            img.onload = function() {
-                adjustImageSize(img.width, img.height, window.innerWidth, window.innerHeight);
-                imageCtx.clearRect(0, 0, imageCanvas.width, imageCanvas.height); // Limpiar el canvas antes de dibujar
-                imageCtx.drawImage(img, 0, 0, imageCanvas.width, imageCanvas.height);
-            };
-            img.src = e.target.result;
-        };
-
-        reader.readAsDataURL(event.target.files[0]);
-    }
-});
-
-function draw(e) {
-    if (!painting) return;
-    drawingCtx.lineCap = 'round';
-    drawingCtx.lineWidth = brushSizeSlider.value;
-    drawingCtx.strokeStyle = colorPicker.value;
-
-    const rect = drawingCanvas.getBoundingClientRect();
-    const scaleX = drawingCanvas.width / rect.width;
-    const scaleY = drawingCanvas.height / rect.height;
-    const x = (e.clientX - rect.left) * scaleX;
-    const y = (e.clientY - rect.top) * scaleY;
-    drawingCtx.lineTo(x, y);
-    drawingCtx.stroke();
-    drawingCtx.beginPath();
-    drawingCtx.moveTo(x, y);
-}
-
-brushSizeSlider.addEventListener('input', function() {
-    drawingCtx.lineWidth = brushSizeSlider.value;
-});
-
-clearBtn.addEventListener('click', function() {
-    drawingCtx.clearRect(0, 0, drawingCanvas.width, drawingCanvas.height);
-});
-
-function adjustImageSize(imgWidth, imgHeight, maxWidth, maxHeight) {
-    const minWidth = maxWidth / 2;
-    const minHeight = maxHeight / 2;
-
-    let newWidth = imgWidth;
-    let newHeight = imgHeight;
-
-    if (newWidth < minWidth) {
-        newWidth = minWidth;
-        newHeight = minWidth * (imgHeight / imgWidth);
-    }
-    if (newHeight < minHeight) {
-        newHeight = minHeight;
-        newWidth = minHeight * (imgWidth / imgHeight);
-    }
-
-    if (newWidth > maxWidth) {
-        newWidth = maxWidth;
-        newHeight = maxWidth * (imgHeight / imgWidth);
-    }
-    if (newHeight > maxHeight) {
-        newHeight = maxHeight;
-        newWidth = maxHeight * (imgWidth / imgHeight);
-    }
-
-    imageCanvas.width = newWidth;
-    imageCanvas.height = newHeight;
-    drawingCanvas.width = newWidth;
-    drawingCanvas.height = newHeight;
-}
-
-fileSelector.addEventListener('change', function() {
-    document.getElementById('initialMessage').style.display = 'none';
-    document.querySelector('.canvas-container').style.display = 'block';
-    
-    const selectedFile = fileSelector.value;
-    currentImageSrc = 'media/maps/' + selectedFile;
-    
-    const img = new Image();
-    img.onload = function() {
-        adjustImageSize(img.width, img.height, window.innerWidth, window.innerHeight);
-        imageCtx.drawImage(img, 0, 0, imageCanvas.width, imageCanvas.height);
-    };
-
-    img.src = currentImageSrc;
-});
-
-
+/*Text Size*/
 textSizeSlider.addEventListener('input', function() {
     textSize = this.value;
 });
 
-textSizeSlider.addEventListener('input', function() {
-    textSize = this.value;
-});
-
+/*Text on canvas*/
 drawingCanvas.addEventListener('click', function(event) {
     const rect = drawingCanvas.getBoundingClientRect();
     const scaleX = drawingCanvas.width / rect.width;
@@ -392,7 +329,7 @@ drawingCanvas.addEventListener('click', function(event) {
 
 
 
-
+/*Customs*/
 document.getElementById('fileUploadBtn').addEventListener('click', function() {
     document.getElementById('mapUpload').click();
 });
