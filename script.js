@@ -163,18 +163,12 @@ function attachIconClickEvents() {
                 selectedIcon = this.getAttribute('data-icon');
                 console.log(selectedIcon);
                 this.classList.add('selected');
+                icon.style.width = this.value + 'px';
+                icon.style.height = this.value + 'px';
             }
         });
     });
 }
-
-// Asignar tamaño de íconos
-document.getElementById('iconSize').addEventListener('input', function() {
-    document.querySelectorAll('.icon').forEach(icon => {
-        icon.style.width = this.value + 'px';
-        icon.style.height = this.value + 'px';
-    });
-});
 
 // Event listener para el selector de categorías
 document.getElementById('tierSelector').addEventListener('change', function() {
@@ -185,12 +179,6 @@ document.getElementById('tierSelector').addEventListener('change', function() {
 document.addEventListener("DOMContentLoaded", function () {
     loadIcons('all');
 });
-
-
-
-
-
-
 
 colorPicker.addEventListener('click', function() {
     document.querySelectorAll('.icon.selected, .weapon.selected').forEach(selected => {
