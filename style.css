@@ -164,8 +164,6 @@ header h1 {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-
-
 #IconUploader {
     width: 90%;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); 
@@ -227,7 +225,6 @@ input[type="color"], input[type="file"], button, select {
     border-radius: 4px;
     padding: 5px 10px;
 }
-
 
 
 /* Estilos para los iconos y textos seleccionados */

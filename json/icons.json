@@ -1,0 +1,414 @@
+{
+  "icons": [
+    {
+      "name": "Tier3 (15)",
+      "src": "media/icons/units/Tier3 (15).png",
+      "tier": "tier3"
+    },
+    {
+      "name": "Tier3 (16)",
+      "src": "media/icons/units/Tier3 (16).png",
+      "tier": "tier3"
+    },
+    {
+      "name": "Tier3 (17)",
+      "src": "media/icons/units/Tier3 (17).png",
+      "tier": "tier3"
+    },
+    {
+      "name": "Tier3 (1)",
+      "src": "media/icons/units/Tier3 (1).png",
+      "tier": "tier3"
+    }, 
+
+    {
+      "name": "Tier3 (2)",
+      "src": "media/icons/units/Tier3 (2).png",
+      "tier": "tier3"
+    },
+    {
+      "name": "Tier3 (3)",
+      "src": "media/icons/units/Tier3 (3).png",
+      "tier": "tier3"
+    },
+    {
+      "name": "Tier3 (4)",
+      "src": "media/icons/units/Tier3 (4).png",
+      "tier": "tier3"
+    },
+    {
+      "name": "Tier3 (5)",
+      "src": "media/icons/units/Tier3 (5).png",
+      "tier": "tier3"
+    },
+    {
+      "name": "Tier3 (6)",
+      "src": "media/icons/units/Tier3 (6).png",
+      "tier": "tier3"
+    },
+    {
+      "name": "Tier3 (7)",
+      "src": "media/icons/units/Tier3 (7).png",
+      "tier": "tier3"
+    },
+    {
+      "name": "Tier3 (8)",
+      "src": "media/icons/units/Tier3 (8).png",
+      "tier": "tier3"
+    },
+    {
+      "name": "Tier3 (9)",
+      "src": "media/icons/units/Tier3 (9).png",
+      "tier": "tier3"
+    },
+    {
+      "name": "Tier3 (10)",
+      "src": "media/icons/units/Tier3 (10).png",
+      "tier": "tier3"
+    },
+    {
+      "name": "Tier3 (11)",
+      "src": "media/icons/units/Tier3 (11).png",
+      "tier": "tier3"
+    },
+    {
+      "name": "Tier3 (12)",
+      "src": "media/icons/units/Tier3 (12).png",
+      "tier": "tier3"
+    },
+    {
+      "name": "Tier3 (9)",
+      "src": "media/icons/units/Tier3 (9).png",
+      "tier": "tier3"
+    },
+    {
+      "name": "Tier3 (9)",
+      "src": "media/icons/units/Tier3 (13).png",
+      "tier": "tier3"
+    },
+    {
+      "name": "Tier3 (9)",
+      "src": "media/icons/units/Tier3 (14).png",
+      "tier": "tier3"
+    },
+    {
+      "name": "Tier3 (9)",
+      "src": "media/icons/units/Tier3 (18).png",
+      "tier": "tier3"
+    },
+    {
+      "name": "Tier3 (9)",
+      "src": "media/icons/units/Tier3 (19).png",
+      "tier": "tier3"
+    },
+    {
+      "name": "Tier3 (20)",
+      "src": "media/icons/units/Tier3 (20).png",
+      "tier": "tier3"
+    },
+    {
+      "name": "Tier3 (21)",
+      "src": "media/icons/units/Tier3 (21).png",
+      "tier": "tier3"
+    },
+    {
+      "name": "Tier3 (22)",
+      "src": "media/icons/units/Tier3 (22).png",
+      "tier": "tier3"
+    },
+    {
+      "name": "Tier3 (23)",
+      "src": "media/icons/units/Tier3 (23).png",
+      "tier": "tier3"
+    },
+    {
+      "name": "Tier3 (24)",
+      "src": "media/icons/units/Tier3 (24).png",
+      "tier": "tier3"
+    },
+    {
+      "name": "Tier3 (25)",
+      "src": "media/icons/units/Tier3 (25).png",
+      "tier": "tier3"
+    },
+    {
+      "name": "Tier3 (26)",
+      "src": "media/icons/units/Tier3 (26).png",
+      "tier": "tier3"
+    },
+    {
+      "name": "Tier3 (27)",
+      "src": "media/icons/units/Tier3 (27).png",
+      "tier": "tier3"
+    },
+    {
+      "name": "Tier3 (28)",
+      "src": "media/icons/units/Tier3 (28).png",
+      "tier": "tier3"
+    },
+    {
+      "name": "Tier3 (29)",
+      "src": "media/icons/units/Tier3 (29).png",
+      "tier": "tier3"
+    },
+
+    {
+      "name": "SA",
+      "src": "media/icons/units/SA.png",
+      "tier": "tier4"
+    },    
+    {
+      "name": "HA",
+      "src": "media/icons/units/HA.png",
+      "tier": "tier4"
+    },
+    {
+      "name": "GA",
+      "src": "media/icons/units/GA.png",
+      "tier": "tier4"
+    },   
+    {
+      "name": "PI",
+      "src": "media/icons/units/PI.png",
+      "tier": "tier4"
+    },
+    {
+      "name": "Puertas",
+      "src": "media/icons/units/Puertas.png",
+      "tier": "tier4"
+    },
+    {
+      "name": "Khevtul",
+      "src": "media/icons/units/Khevtuul.png",
+      "tier": "tier4"
+    },
+    {
+      "name": "HD",
+      "src": "media/icons/units/HD.png",
+      "tier": "tier4"
+    },
+    {
+      "name": "jav1",
+      "src": "media/icons/units/jav1.png",
+      "tier": "tier4"
+    },
+    {
+      "name": "jav2",
+      "src": "media/icons/units/jav2.png",
+      "tier": "tier4"
+    },
+    {
+      "name": "Camels",
+      "src": "media/icons/units/Camels.png",
+      "tier": "tier4"
+    },
+    {
+      "name": "Monks",
+      "src": "media/icons/units/Monks.png",
+      "tier": "tier4"
+    },
+    {
+      "name": "OnnaMusha",
+      "src": "media/icons/units/OnnaMusha.png",
+      "tier": "tier4"
+    },
+    {
+      "name": "Murmi",
+      "src": "media/icons/units/Murmi.png",
+      "tier": "tier4"
+    },
+    {
+      "name": "ST",
+      "src": "media/icons/units/ST.png",
+      "tier": "tier4"
+    },
+    {
+      "name": "Paladines",
+      "src": "media/icons/units/Paladines.png",
+      "tier": "tier4"
+    },
+    {
+      "name": "cav",
+      "src": "media/icons/units/cav.png",
+      "tier": "tier4"
+    },
+    {
+      "name": "fortebraccio",
+      "src": "media/icons/units/fortebraccio.png",
+      "tier": "tier4"
+    },
+    {
+      "name": "Berserkers",
+      "src": "media/icons/units/Berserkers.png",
+      "tier": "tier4"
+    },
+    {
+      "name": "viejos",
+      "src": "media/icons/units/viejos.png",
+      "tier": "tier4"
+    },
+    {
+      "name": "Calymores",
+      "src": "media/icons/units/Calymores.png",
+      "tier": "tier4"
+    },
+    {
+      "name": "GH",
+      "src": "media/icons/units/GH.png",
+      "tier": "tier4"
+    },
+    {
+      "name": "yeomen",
+      "src": "media/icons/units/yeomen.png",
+      "tier": "tier4"
+    },
+    {
+      "name": "tseregs",
+      "src": "media/icons/units/tseregs.png",
+      "tier": "tier4"
+    },
+    {
+      "name": "cv",
+      "src": "media/icons/units/cv.png",
+      "tier": "tier4"
+    },
+    {
+      "name": "azaps",
+      "src": "media/icons/units/azaps.png",
+      "tier": "tier4"
+    },
+    {
+      "name": "C",
+      "src": "media/icons/units/C.png",
+      "tier": "tier4"
+    },
+    {
+      "name": "H",
+      "src": "media/icons/units/H.png",
+      "tier": "tier4"
+    },
+    {
+      "name": "CPP",
+      "src": "media/icons/units/CPP.png",
+      "tier": "tier4"
+    },
+
+    
+    {
+      "name": "AlemanesChetados",
+      "src": "media/icons/units/AlemanesChetados.png",
+      "tier": "tier5"
+    },
+    {
+      "name": "Catafract",
+      "src": "media/icons/units/Catafract.png",
+      "tier": "tier5"
+    },
+    {
+      "name": "Dogs",
+      "src": "media/icons/units/Dogs.png",
+      "tier": "tier5"
+    },
+    {
+      "name": "Falco",
+      "src": "media/icons/units/Falco.png",
+      "tier": "tier5"
+    },
+    {
+      "name": "Flames",
+      "src": "media/icons/units/Flames.png",
+      "tier": "tier5"
+    },
+    {
+      "name": "Gendarmes",
+      "src": "media/icons/units/Gendarmes.png",
+      "tier": "tier5"
+    },
+    {
+      "name": "Asasins",
+      "src": "media/icons/units/Asasins.png",
+      "tier": "tier5"
+    },
+    {
+      "name": "Husares",
+      "src": "media/icons/units/Husares.png",
+      "tier": "tier5"
+    },
+    {
+      "name": "Lancelot",
+      "src": "media/icons/units/Lancelot.png",
+      "tier": "tier5"
+    },
+    {
+      "name": "Flames",
+      "src": "media/icons/units/LF.png",
+      "tier": "tier5"
+    },
+    {
+      "name": "LIAO",
+      "src": "media/icons/units/LIAO.png",
+      "tier": "tier5"
+    },
+    {
+      "name": "Mariposas",
+      "src": "media/icons/units/Mariposas.png",
+      "tier": "tier5"
+    },
+    {
+      "name": "Modaos",
+      "src": "media/icons/units/MODAO.png",
+      "tier": "tier5"
+    },
+    {
+      "name": "Monasticos",
+      "src": "media/icons/units/Monasticos.png",
+      "tier": "tier5"
+    },
+    {
+      "name": "Orochi",
+      "src": "media/icons/units/Orochi.png",
+      "tier": "tier5"
+    },
+    {
+      "name": "Paves",
+      "src": "media/icons/units/Paves.png",
+      "tier": "tier5"
+    },
+    {
+      "name": "Reapers",
+      "src": "media/icons/units/Reapers.png",
+      "tier": "tier5"
+    },
+    {
+      "name": "Shenji",
+      "src": "media/icons/units/Shenji.png",
+      "tier": "tier5"
+    },
+    {
+      "name": "ShieldMaids",
+      "src": "media/icons/units/ShieldMaids.png",
+      "tier": "tier5"
+    },
+    {
+      "name": "Shiladars",
+      "src": "media/icons/units/Shiladars.png",
+      "tier": "tier5"
+    },
+    {
+      "name": "Tercio",
+      "src": "media/icons/units/Tercio.png",
+      "tier": "tier5"
+    },
+    {
+      "name": "Varega",
+      "src": "media/icons/units/Varega.png",
+      "tier": "tier5"
+    },
+    {
+      "name": "Yanyuedao",
+      "src": "media/icons/units/yanyuedao.png",
+      "tier": "tier5"
+    }
+
+  ]
+}

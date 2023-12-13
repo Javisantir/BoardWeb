@@ -1,6 +1,10 @@
 {
     "customicons":
     [
-        
+        {
+            "name": "icon",
+            "type": "image",
+            "src": "data/img/icon.png"
+        }
     ]
 }
