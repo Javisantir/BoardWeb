@@ -11,13 +11,7 @@
         
         { "category": "city", "value": "Anadoulou City 2D.png", "text": "Anadoulou City 2D" },
         { "category": "city", "value": "Anadoulou City 3D.png", "text": "Anadoulou City 3D" },
-        { "category": "city", "value": "White elk fort 2d.png", "text": "Asian 2Breach 2D" },
-        { "category": "city", "value": "Asian 2Breach 3D Back.png", "text": "Asian 2Breach 3D Back" },
-        { "category": "city", "value": "Asian2 NoBreach 2D.png", "text": "Asian1 NoBreach 2D" },
-        { "category": "city", "value": "TW - Sun City.webp", "text": "Asian2 NoBreach 2D" },
-        { "category": "city", "value": "European Right Breach 2D.png", "text": "European Right Breach 2D" },
-        { "category": "city", "value": "TW Valley Fortress.webp", "text": "European NoBreach (Schaken) 2D" },
-        { "category": "city", "value": "European NoBreach (Schaken) 3D Fron.png", "text": "European NoBreach (Schaken) 3D" },
+        { "category": "city", "value": "White elk fort 2d.png", "text": "White Elk Fort 2D" },
 
         { "category": "capital", "value": "Anliang 2d.png", "text": "Anliang 2D" },
         { "category": "capital", "value": "Anliang 3D Back.png", "text": "Anliang 3D Back" },
@@ -39,13 +33,6 @@
         { "category": "WorldMap", "value": "Ungverija.png", "text": "Ungverija" },
 
         { "category": "fortress", "value": "Anadoulou Fortress 3d BACK.png", "text": "Anadoulou Fortress 3D Back" },
-        { "category": "fortress", "value": "Anadoulou Fortress 3D Front.png", "text": "Anadoulou Fortress 3D Front" },
-        { "category": "fortress", "value": "Asian Fort 2d.png", "text": "Asian Fortress 2D" },
-        { "category": "fortress", "value": "Asian Fort 3D Front.png", "text": "Asian Fortress 3D Front" },
-        { "category": "fortress", "value": "TW - Border Fort.webp", "text": "Asian1 Fortress 2D Front" },
-        { "category": "fortress", "value": "Asian1 NoBreach 3D Back.png", "text": "Asian1 Fortress 3D Back" },
-        { "category": "fortress", "value": "TW West Fort.webp", "text": "European Fortress 2D" },
-        { "category": "fortress", "value": "European Left Breach 3D Front.png", "text": "European Fortress 3D Front" },
-        { "category": "fortress", "value": "European Left Breach 3D Back.png", "text": "European Fortress 3D Back" }
+        { "category": "fortress", "value": "Anadoulou Fortress 3D Front.png", "text": "Anadoulou Fortress 3D Front" }
     ]
 }
