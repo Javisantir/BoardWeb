@@ -421,6 +421,37 @@ document.getElementById('fileUploadBtn').addEventListener('click', function() {
     document.getElementById('mapUpload').click();
 });
 
+document.getElementById('mapUpload').addEventListener('change', function() {
+    const file = this.files[0];
+    const reader = new FileReader();
+    reader.onload = function(event) {
+        document.getElementById('initialMessage').style.display = 'none';
+        document.querySelector('.canvas-container').style.display = 'block';
+        currentImageSrc = event.target.result;
+        const img = new Image();
+        img.onload = function() {
+            adjustImageSize(img.width, img.height, window.innerWidth, window.innerHeight);
+            imageCtx.drawImage(img, 0, 0, imageCanvas.width, imageCanvas.height);
+        };
+        img.src = currentImageSrc;
+    };
+    reader.readAsDataURL(file);
+});
+
 document.getElementById('IconUploadButton').addEventListener('click', function() {
     document.getElementById('iconUpload').click();
+});
+
+document.getElementById('iconUpload').addEventListener('change', function() {
+    const file = this.files[0];
+    const reader = new FileReader();
+    reader.onload = function(event) {
+        const img = document.createElement('img');
+        img.src = event.target.result;
+        img.className = 'icon';
+        img.dataset.icon = event.target.result;
+        document.getElementById('icons').appendChild(img);
+        attachIconClickEvents();
+    };
+    reader.readAsDataURL(file);
 });
